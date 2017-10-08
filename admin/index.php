@@ -11,6 +11,6 @@
 </head>
 
 <body>
-<h1>Admin <?php echo($ligne_utilisateur['prenom']); ?></h1>
+<h1>Admin du site cv de <?php echo($ligne_utilisateur['prenom']); ?></h1>
 </body>
 </html>
