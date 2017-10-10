@@ -107,7 +107,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 if (isset($_GET['date'])) { // depuis la page des vendus on a envoyé une date
 
 // il faut la mettre dans le sens de la BDD
-list($day, $month, $year) = explode('-', $_GET['date']);
+list($day, $month, $year) = explode('-', $_GET['date']);// à quel endroit je coupe -' c'est le premier paramètre de explode
 		$annee=$year;
 		$mois=$month;
 		$jour=$day;
@@ -129,7 +129,7 @@ if (isset($_POST['date_vente'])) {//Si on envoie une date de recherche, on récu
 	}elseif($annee==2015){
 		$table_vendu='t_vendu_2015';
 	}elseif($annee==2016){
-		$table_vendu='t_vendu_2016_3_4';// ACHANGER POUR 2016
+		$table_vendu='t_vendu_2016_3_4';// A CHANGER POUR 2016
 	}else{
 		$table_vendu='t_vendu';//ajouté pour éviter la requête vide
 	}
