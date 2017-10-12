@@ -22,3 +22,10 @@ body {
 	background: #665C4A;
 	color: #fff;
 }
+
+a {
+	color: #000;
+}a:hover {
+	color: orangered;
+	background: #F6FBF5;
+}
