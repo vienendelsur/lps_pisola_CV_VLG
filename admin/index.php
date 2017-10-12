@@ -71,14 +71,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center">Admin / site cv / <?php echo($ligne_utilisateur['prenom']); ?></h1>
+      <h1 class="text-center">Admin - site cv :<br><?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
 </div>
 <div class="container">
   <div class="row text-center">
-    <div class="col-md-6 col-md-offset-3">«&nbsp;Longtemps, je me suis couché de bonne heure. Parfois, à peine ma   bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le   temps de me dire&nbsp;: «&nbsp;Je m’endors.&nbsp;» Et, une demi-heure après, la pensée   qu’il était temps de chercher le sommeil m’éveillait&nbsp;; je voulais poser   le volume que je croyais avoir encore dans les mains et souffler ma   lumière&nbsp;; je n’avais pas cessé en dormant de faire des réflexions sur ce   que je venais de lire, mais ces réflexions avaient pris un tour un peu   particulier&nbsp;; il me semblait que j’étais moi-même ce dont parlait   l’ouvrage&nbsp;: une église, un quatuor, la rivalité de François <abbr title="premier">Ier</abbr> et de Charles Quint. Cette croyance survivait pendant quelques secondes   à mon réveil&nbsp;; elle ne choquait pas ma raison mais pesait comme des   écailles sur mes yeux et les empêchait de se rendre compte que le   bougeoir n’était plus allumé. »</div>
+    <div class="col-md-6 col-md-offset-3">«&nbsp;Longtemps, je me suis couché de bonne heure. Parfois, à peine ma   bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le   temps de me dire&nbsp;: «&nbsp;Je m’endors.&nbsp;» Et, une demi-heure après, la pensée qu’il était temps de chercher le sommeil m’éveillait&nbsp;; je voulais poser le volume que je croyais avoir encore dans les mains et souffler ma   lumière&nbsp;; je n’avais pas cessé en dormant de faire des réflexions sur ce   que je venais de lire, mais ces réflexions avaient pris un tour un peu particulier&nbsp;; il me semblait que j’étais moi-même ce dont parlait l’ouvrage&nbsp;: une église, un quatuor, la rivalité de François <abbr title="premier">Ier</abbr> et de Charles Quint. »</div>
   </div>
   <hr>
   <div class="row">
