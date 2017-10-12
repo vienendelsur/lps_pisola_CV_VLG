@@ -1,3 +1,24 @@
 @charset "utf-8";
 /* CSS Document admin pisola*/
 
+body {
+	background: #F6FBF5;
+}
+
+.container {
+	background: #FFFFFF;
+}
+
+.container-fluid {
+	background: #F6FBF5;
+}
+
+.fond_fonce {
+	background: #D0D7C0;
+	color: #333;
+}
+
+.sombre {
+	background: #665C4A;
+	color: #fff;
+}

@@ -14,6 +14,8 @@
 <!-- Bootstrap -->
 <link href="../css/bootstrap.css" rel="stylesheet">
 
+<!--Mes styles-->
+<link rel="stylesheet" type="text/css" href="admin_css/style_admin.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -23,13 +25,13 @@
 </head>
 <body>
 <nav class="navbar navbar-default">
-  <div class="container-fluid"> 
+  <div class="container-fluid sombre"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       <a class="navbar-brand" href="#"><?php echo($ligne_utilisateur['pseudo']); ?></a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="defaultNavbar1">
+    <div class="collapse navbar-collapse fond_nav" id="defaultNavbar1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Lien<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Lien</a></li>
@@ -70,8 +72,8 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center">Admin - site cv :<br><?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+    <div class="col-md-6 col-md-offset-3 fond_fonce">
+      <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
@@ -114,7 +116,7 @@
     </div>
   </div>
   <hr>
-  <div class="row">
+  <div class="row sombre">
     <div class="text-center col-md-6 col-md-offset-3">
       <h4>Pied de page </h4>
       <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
