@@ -27,7 +27,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <head>
 <meta charset="utf-8">
 <?php
-		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
 		$ligne_utilisateur = $sql->fetch();
 	?>
 <title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
@@ -38,7 +38,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <p>texte</p>
 <hr>
 <?php
-		$sql = $pdoCV->prepare(" SELECT * FROM t_competences ");
+		$sql = $pdoCV->prepare(" SELECT * FROM t_competences WHERE utilisateur_id ='1' ");
 		$sql->execute();
 		$nbr_competences = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
@@ -52,14 +52,14 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 		<th>Suppression</th>
 		<th>Modification</th>
 	</tr>
-	<tr>
-	<?php while ($ligne_competence = $sql->fetch()) { ?>
-			<td><?php echo $ligne_competence['competence']; ?></td>
-			<td><?php echo $ligne_competence['c_niveau']; ?></td>
-	<td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>">supprimer</a></td>
-	  		<td><a href="#">modifier</a></td>
-		</tr>
-	<?php }	?>
+<tr>
+<?php while ($ligne_competence = $sql->fetch()) { ?>
+		<td><?php echo $ligne_competence['competence']; ?></td>
+		<td><?php echo $ligne_competence['c_niveau']; ?></td>
+<td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>">supprimer</a></td>
+  <td><a href="modif_competence.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>">modifier</a></td>
+	</tr>
+<?php }	?>
 </table>
 <hr>
 <h3>Insertion d'une compétence</h3>
