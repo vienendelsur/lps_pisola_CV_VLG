@@ -1,17 +1,16 @@
 <?php require 'connexion.php'; ?>
 <?php
 // gestion des contenus de la BDD compétences
-
 //insertion d'une compétence
 if(isset($_POST['competence'])) {// si on a posté une nouvelle comp.
 	if($_POST['competence']!='' && $_POST['c_niveau']!='') {// si compétence n'est pas vide
 		$competence = addslashes($_POST['competence']);
 		$c_niveau = addslashes($_POST['c_niveau']);
+		
 		$pdoCV->exec(" INSERT INTO t_competences VALUES (NULL, '$competence', '$c_niveau', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
 		header("location: competences.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
-	
 }//ferme le if isset du form 
 // suppression d'une compétence
 
@@ -21,7 +20,6 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 	$sql = " DELETE FROM t_competences WHERE id_competence = '$efface' ";
 	$pdoCV->query($sql);// on peut avec exec aussi si on veut
 	header("location: competences.php");//pour revenir sur la page
-	
 }//ferme le if isset
 ?>
 <!doctype html>
@@ -45,7 +43,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 		$nbr_competences = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
 	?>
-<h2>Il y a <?php echo $nbr_competences; ?> compétences </h2>
+<h2>Il y a <?php echo $nbr_competences; ?> compétence<?php echo ($nbr_competences>1)?'s':'' ?> </h2>
 
 <table border="2">
 	<tr>
