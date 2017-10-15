@@ -16,6 +16,6 @@
 <hr>
 
 <h2>Accueil admin</h2>
-<p><a href="competences.php">compétences</a></p>
+<p><a href="competencesOLD.php">compétences</a></p>
 </body>
 </html>
