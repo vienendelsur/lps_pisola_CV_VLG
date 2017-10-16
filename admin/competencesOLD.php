@@ -44,7 +44,6 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 		//$ligne_competence = $sql->fetch();
 	?>
 <h2>Il y a <?php echo $nbr_competences; ?> compétence<?php echo ($nbr_competences>1)?'s':'' ?> </h2>
-
 <table border="2">
 	<tr>
 		<th>Compétences</th>

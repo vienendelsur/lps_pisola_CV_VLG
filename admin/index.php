@@ -12,7 +12,7 @@
 <title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
 
 <!-- Bootstrap -->
-<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 
 <!--Mes styles-->
 <link rel="stylesheet" type="text/css" href="admin_css/style_admin.css">
@@ -125,9 +125,9 @@
   <hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>
