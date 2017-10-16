@@ -73,7 +73,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+      <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
