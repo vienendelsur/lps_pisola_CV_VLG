@@ -15,7 +15,7 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!--Mes styles-->
-<link rel="stylesheet" type="text/css" href="admin_css/style_admin.css">
+<link rel="stylesheet" type="text/css" href="css/style_admin.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -29,17 +29,17 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="#"><?php echo($ligne_utilisateur['pseudo']); ?></a></div>
+      <a class="navbar-brand" href="index.php"><?php echo($ligne_utilisateur['pseudo']); ?></a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse fond_nav" id="defaultNavbar1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Lien<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="utilisateur.php">Mon profil<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Lien</a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu déroulant<span class="caret"></span></a>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Parcours<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lien 01</a></li>
-            <li><a href="#">Lien 02</a></li>
-            <li><a href="#">Lien 03</a></li>
+            <li><a href="#">Expériences</a></li>
+            <li><a href="#">Réalisations</a></li>
+            <li><a href="#">Formations</a></li>
             <li class="divider"></li>
             <li><a href="#">Lien à part</a></li>
             <li class="divider"></li>
