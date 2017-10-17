@@ -38,7 +38,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!--Mes styles-->
-<link rel="stylesheet" type="text/css" href="admin_css/style_admin.css">
+<link rel="stylesheet" type="text/css"href="css/style_admin.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -58,11 +58,22 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Lien<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Lien</a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu déroulant<span class="caret"></span></a>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Parcours<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lien 01</a></li>
-            <li><a href="#">Lien 02</a></li>
-            <li><a href="#">Lien 03</a></li>
+            <li><a href="formations.php">Formation</a></li>
+            <li><a href="experiences.php">Expériences</a></li>
+            <li><a href="realisations.php">Réalisations</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Lien à part</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Autre lien à part</a></li>
+          </ul>
+        </li>
+         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Compétences<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="competences.php">Compétences</a></li>
+            <li><a href="loisirs.php">Loisirs</a></li>
+            <li><a href="reseaux.php">Reseaux</a></li>
             <li class="divider"></li>
             <li><a href="#">Lien à part</a></li>
             <li class="divider"></li>
@@ -103,45 +114,66 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 </div>
 <div class="container">
   <div class="row text-left">
-    <div class="col-md-6 col-md-offset-3"><?php
+    <div class="col-lg-8"><?php
 		$sql = $pdoCV->prepare(" SELECT * FROM t_competences WHERE utilisateur_id ='1' ");
 		$sql->execute();
 		$nbr_competences = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
 	?>
-      <h1>Compétences</h1>
+      <h4 class="well">Il y a <?php echo $nbr_competences; ?> compétence<?php echo ($nbr_competences>1)?'s':'' ?> </h4>
     </div>
   </div>
-  <hr>
-  <div class="row">
-   <h3 class="text-capitalize text-left">Il y a <?php echo $nbr_competences; ?> compétence<?php echo ($nbr_competences>1)?'s':'' ?> </h3>
-    <div class="text-justify col-sm-4"><table border="2">
-	<tr>
-		<th>Compétences</th>
-		<th>Niveau en %</th>
-		<th>Suppression</th>
-		<th>Modification</th>
-	</tr>
+  
+   <div class="row">
+    <div class="text-justify col-sm-4 col-lg-8">
+   
+    <div class="panel panel-default">
+		 <div class="panel-body">
+		<p>Liste des compétences</p>
+    <table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Compétences</th>
+			<th>Niveau en %</th>
+			<th>Suppression</th>
+			<th>Modification</th>
+		</tr>
+	</thead>
+<tbody>
 <tr>
 <?php while ($ligne_competence = $sql->fetch()) { ?>
 		<td><?php echo $ligne_competence['competence']; ?></td>
 		<td><?php echo $ligne_competence['c_niveau']; ?></td>
-<td><a href="competencesOLD.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>">supprimer</a></td>
-  <td><a href="modif_competence.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>">modifier</a></td>
+<td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
+  <td><a href="modif_competence.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
-</table></div>
-    <div class="col-sm-4 text-justify">
-    <h3>Insertion d'une compétence</h3>
-<!--formulaire d'insertion
---><form action="competences.php" method="post">
-	<label for="competence">Compétence</label>
-	<input type="text" name="competence" id="competence" placeholder="Insérer une compétence">
-	<input type="text" name="c_niveau" id="c_niveau" placeholder="Insérer le niveau">
-	<input type="submit" value="Insérez">
-</form></div>
-    <div class="col-sm-4 text-justify">« Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le temps de me dire : « Je m’endors. » Et, une demi-heure après, la pensée qu’il était temps de chercher le sommeil m’éveillait ; je voulais poser le volume que je croyais avoir encore dans les mains et souffler ma lumière ; je n’avais pas cessé en dormant de faire des réflexions sur ce que je venais de lire, mais ces réflexions avaient pris un tour un peu particulier ; il me semblait que j’étais moi-même ce dont parlait l’ouvrage : une église, un quatuor, la rivalité de François Ier et de Charles Quint. Cette croyance survivait pendant quelques secondes à mon réveil ; elle ne choquait pas ma raison mais pesait comme des écailles sur mes yeux et les empêchait de se rendre compte que le bougeoir n’était plus allumé. Puis elle commençait à me devenir inintelligible, comme après la métempsycose les pensées d’une existence antérieure ; le sujet du livre se détachait de moi, j’étais libre de m’y appliquer ou non ; aussitôt je recouvrais la vue et j’étais bien étonné de trouver autour de moi une obscurité, douce et reposante pour mes yeux, mais peut-être plus encore pour mon esprit, à qui elle apparaissait comme une chose sans cause, incompréhensible, comme une chose vraiment obscure. Je me demandais quelle heure il pouvait être ; j’entendais le sifflement des trains qui, plus ou moins éloigné, comme le chant d’un oiseau dans une forêt, relevant les distances, me décrivait l’étendue de la campagne déserte où le voyageur se hâte vers la station prochaine ; et le petit chemin qu’il suit va être gravé dans son souvenir par l’excitation qu’il doit à des lieux nouveaux, à des actes inaccoutumés, à la causerie récente et aux adieux sous la lampe étrangère qui le suivent encore dans le silence de la nuit, à la douceur prochaine du retour1. »</div>
-  </div>
+</tbody>
+</table>
+		</div>
+		</div>
+   </div>
+    <div class="col-sm-4 col-lg-4 text-justify">
+    <div class="panel panel-default">
+		 <div class="panel-body">
+			<h5>Insertion d'une compétence</h5>
+			<hr>
+		<!--formulaire d'insertion-->
+			<form action="competences.php" method="post">
+				<div class="form-group">
+				<label for="competence">Compétence</label>
+				<input type="text" name="competence" id="competence" placeholder="Insérer une compétence" class="form-control">
+				</div>
+				<div class="form-group">
+				<label for="c_niveau">Niveau</label>
+				<input type="text" name="c_niveau" id="c_niveau" placeholder="Insérer le niveau" class="form-control">
+				</div>
+				<button type="submit" class="btn btn-info btn-block">Insérez</button>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
   <hr>
   <div class="row">
     <div class="text-center col-md-12">

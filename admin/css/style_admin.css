@@ -16,11 +16,15 @@ body {
 .fond_fonce {
 	background: #D0D7C0;
 	color: #333;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
 }
 
 .sombre {
 	background: #665C4A;
 	color: #fff;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
 }
 
 a {
