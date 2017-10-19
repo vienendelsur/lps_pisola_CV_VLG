@@ -13,13 +13,7 @@ body {
 	background: #F6FBF5;
 }
 
-.fond_fonce {
-	background: #D0D7C0;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
-	margin-top: 10px;
-	opacity: 0.8;
-}
+
 
 .sombre {
 	background: #665C4A;
@@ -35,6 +29,25 @@ a {
 	background: #F6FBF5;
 }
 
-.popolasca {
-	background-image: url(../img/geometic-bg-white.jpg);
+.geometrique {
+	background-image: url(../img/geometrique.png);
+	height: 100%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center top;
+}
+
+.fond_fonce {
+	background: #D0D7C0;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	margin-top: 10px;
+	opacity: 0.9;
+	color: #665C4A;
+}
+
+/*pour le menu*/
+.sr-only {
+	background: #665C4A;
 }

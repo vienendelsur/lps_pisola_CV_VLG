@@ -89,13 +89,11 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Lien</a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu déroulant<span class="caret"></span></a>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo($ligne_utilisateur['prenom']); ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lien</a></li>
-            <li><a href="#">Autre lien</a></li>
-            <li><a href="#">Autre lien</a></li>
+            <li><a href="#">Déconnexion</a></li>
             <li class="divider"></li>
-            <li><a href="#">Autre lien à part</a></li>
+            <li><a href="#">Site public</a></li>
           </ul>
         </li>
       </ul>
@@ -104,7 +102,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
   </div>
   <!-- /.container-fluid --> 
 </nav>
-<div class="container-fluid popolasca">
+<div class="container-fluid geometrique">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 fond_fonce">
       <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>

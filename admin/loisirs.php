@@ -92,7 +92,7 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
   </div>
   <!-- /.container-fluid --> 
 </nav>
-<div class="container-fluid">
+<div class="container-fluid geometrique">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 fond_fonce">
       <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
