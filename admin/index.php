@@ -24,52 +24,8 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid"> 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="index.php"><?php echo($ligne_utilisateur['pseudo']); ?></a></div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse fond_nav" id="defaultNavbar1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="utilisateur.php">Mon profil<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Lien</a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Parcours<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Expériences</a></li>
-            <li><a href="#">Réalisations</a></li>
-            <li><a href="#">Formations</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Lien à part</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Autre lien à part</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="recherche">
-        </div>
-        <button type="submit" class="btn btn-default">Envoyer</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Lien</a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu déroulant<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lien</a></li>
-            <li><a href="#">Autre lien</a></li>
-            <li><a href="#">Autre lien</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Autre lien à part</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse --> 
-  </div>
-  <!-- /.container-fluid --> 
-</nav>
+<!--nav en include-->
+<?php include("include_nav.php"); ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 fond_fonce">
