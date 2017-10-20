@@ -26,10 +26,10 @@
 <body>
 <!--nav en include-->
 <?php include("include_nav.php"); ?>
-<div class="container-fluid geometrique">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - site cv : </h1>
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-right">Admin - site cv : </h1>
     </div>
   </div>
   <hr>
