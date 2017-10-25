@@ -3,13 +3,12 @@
   <div class="container-fluid"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Nav</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       <a class="navbar-brand" href="index.php"><?php echo($ligne_utilisateur['pseudo']); ?></a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse fond_nav" id="defaultNavbar1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Lien<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Lien</a></li>
+        <li class="active"><a href="#">Mon profil<span class="sr-only">(current)</span></a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Parcours<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="formations.php">Formations</a></li>
@@ -40,7 +39,6 @@
         <button type="submit" class="btn btn-default">Envoyer</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Lien</a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo($ligne_utilisateur['prenom']); ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Déconnexion</a></li>
@@ -55,30 +53,3 @@
   <!-- /.container-fluid --> 
 </nav>
 <!--fin de la navigation-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
