@@ -3,12 +3,14 @@
 // gestion des contenus de la BDD compétences
 //insertion d'une compétence
 if(isset($_POST['e_titre'])) {// si on a posté une nouvelle comp.
-	if($_POST['e_titre']!='' && $_POST['VOIR']!='') {// si compétence n'est pas vide
+	if($_POST['e_titre']!='' && $_POST['e_soustitre']!='' && $_POST['e_dates']!='' && $_POST['e_description']!='') {// si compétence n'est pas vide
 		$e_titre = addslashes($_POST['e_titre']);
-		$VOIR = addslashes($_POST['VOIR']);
+		$e_soustitre = addslashes($_POST['e_soustitre']);
+		$e_dates = addslashes($_POST['e_dates']);
+		$e_description = addslashes($_POST['e_description']);
 		
-		$pdoCV->exec(" INSERT INTO t_experiences VALUES (NULL, '$e_titre', '$VOIR', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
-		header("location: experienceS.php");//pour revenir sur la page
+		$pdoCV->exec(" INSERT INTO t_experiences VALUES (NULL, '$e_titre', '$e_soustitre', '$e_dates', '$e_description', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		header("location: experiences.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
@@ -49,15 +51,16 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 <body>
 <!--nav en include-->
 <?php include("include_nav.php"); ?>
-<div class="container-fluid geometrique">
+<div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
+	  <br>
     <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+      <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
     <div class="col-lg-6"><?php
 		$sql = $pdoCV->prepare(" SELECT * FROM t_experiences WHERE utilisateur_id ='1' ");
@@ -102,7 +105,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 		</div>
 		</div>
    </div>
-    <div class="col-sm-4 text-justify col-lg-6">
+    <div class="col-sm-4 col-lg-6">
     <div class="panel panel-default">
 		 <div class="panel-body">
 			<h5>Insertion d'une expérience</h5>
@@ -111,11 +114,19 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 			<form action="experiences.php" method="post">
 				<div class="form-group">
 				<label for="e_titre">Titre exp.</label>
-				<input type="text" name="e_titre" id="e_titre" placeholder="Insérer le titre" class="form-control">
+				<input name="e_titre" type="text" required="required" class="form-control" id="e_titre" placeholder="Insérer le titre">
 				</div>
 				<div class="form-group">
-				<label for="VOIR">VOIR</label>
-				<input type="text" name="VOIR" id="VOIR" placeholder="Insérer le VOIR" class="form-control">
+				<label for="e_soustitre">Sous-titre exp.</label>
+				<input type="text" required="required" name="e_soustitre" id="e_soustitre" placeholder="Insérer le sous-titre" class="form-control">
+				</div>
+				<div class="form-group">
+				<label for="e_dates">Dates</label>
+				<input type="text" required="required" name="e_dates" id="e_dates" placeholder="Insérer les dates" class="form-control">
+				</div>
+				<div class="form-group">
+				<label for="e_description">Description de l'exp.</label>
+				<textarea name="e_description" id="e_description" class="form-control"></textarea>
 				</div>
 				<button type="submit" class="btn btn-info btn-block">Insérez une nelle expérience</button>
 			</form>
@@ -151,13 +162,11 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
     </div>
   </div>
   <hr>
-  <div class="row sombre">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Pied de page </h4>
-      <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
-    </div>
-  </div>
-  <hr>
+	  <div class="row">
+		  <!--	 footer en include-->
+	<?php include("include_foot.php"); ?>
+	  </div>
+	<hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script>

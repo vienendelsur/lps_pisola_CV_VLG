@@ -50,7 +50,8 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
 <?php include("include_nav.php"); ?>
 <div class="container-fluid geometrique">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 fond_fonce">
+    <br>
+	<div class="col-md-6 col-md-offset-3 fond_fonce">
       <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
@@ -120,13 +121,11 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
     </div>
   </div>
 <hr>
-  <div class="row sombre">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Pied de page </h4>
-      <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
-    </div>
-  </div>
-  <hr>
+	  <div class="row">
+		  <!--	 footer en include-->
+	<?php include("include_foot.php"); ?>
+	  </div>
+	<hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script>

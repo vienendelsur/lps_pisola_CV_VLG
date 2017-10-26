@@ -2,21 +2,21 @@
 /* CSS Document admin pisola*/
 
 body {
-	background: #F6FBF5;
-}
-
-.container {
-	background: #FFFFFF;
+	background-color: #D0D7C0;
 }
 
 .container-fluid {
 	background: #F6FBF5;
 }
 
-
+.container {
+	background: #FFFFFF;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
 
 .sombre {
-	background: #665C4A;
+	background: #A09883;
 	color: #fff;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
@@ -25,7 +25,7 @@ body {
 a {
 	color: #000;
 }a:hover {
-	color: orangered;
+	color: olive;
 	background: #F6FBF5;
 }
 

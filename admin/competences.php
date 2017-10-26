@@ -49,15 +49,16 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <body>
 <!--nav en include-->
 <?php include("include_nav.php"); ?>
-<div class="container-fluid geometrique">
+<div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
+	  <br>
     <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - site cv : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+      <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
 </div>
-<div class="container">
+<div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
     <div class="col-lg-8"><?php
 		$sql = $pdoCV->prepare(" SELECT * FROM t_competences WHERE utilisateur_id ='1' ");
@@ -147,13 +148,11 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
     </div>
   </div>
   <hr>
-  <div class="row sombre">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Pied de page </h4>
-      <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
-    </div>
-  </div>
-  <hr>
+	  <div class="row">
+		  <!--	 footer en include-->
+	<?php include("include_foot.php"); ?>
+	  </div>
+	<hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script>

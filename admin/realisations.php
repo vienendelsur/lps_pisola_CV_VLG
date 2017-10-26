@@ -1,4 +1,29 @@
 <?php require 'connexion.php'; ?>
+<?php
+// gestion des contenus de la BDD compétences
+//insertion d'une compétence
+if(isset($_POST['r_titre'])) {// si on a posté une nouvelle comp.
+	if($_POST['r_titre']!='' && $_POST['r_soustitre']!='' && $_POST['r_dates']!='' && $_POST['r_description']!='') {// si compétence n'est pas vide
+		$r_titre = addslashes($_POST['r_titre']);
+		$r_soustitre = addslashes($_POST['r_soustitre']);
+		$r_dates = addslashes($_POST['r_dates']);
+		$r_description = addslashes($_POST['r_description']);
+		
+		$pdoCV->exec(" INSERT INTO t_realisations VALUES (NULL, '$r_titre', '$r_soustitre', '$r_dates', '$r_description', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		header("location: realisations.php");//pour revenir sur la page
+		exit();
+	}//ferme le if n'est pas vide
+}//ferme le if isset du form 
+// suppression d'une compétence
+
+if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'url
+	$efface = $_GET['id_realisation'];//je mets cela ds une variable
+	
+	$sql = " DELETE FROM t_realisations WHERE id_realisation = '$efface' ";
+	$pdoCV->query($sql);// on peut avec exec aussi si on veut
+	header("location: realisations.php");//pour revenir sur la page
+}//ferme le if isset
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,6 +53,7 @@
 <?php include("include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
+	  <br>
     <div class="col-md-6 col-md-offset-3 fond_fonce">
       <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
@@ -36,55 +62,73 @@
 </div>
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
-    
-      <h4 class="well">Il y a </h4>
+    <div class="col-lg-6"><?php
+		$sql = $pdoCV->prepare(" SELECT * FROM t_realisations WHERE utilisateur_id ='1' ");
+		$sql->execute();
+		$nbr_realisations = $sql->rowCount();
+		//$ligne_competence = $sql->fetch();
+	?>
+      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> réalisation<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
     </div>
   </div>
   
    <div class="row">
-    <div class="text-justify col-sm-4 col-lg-8">
+    <div class="text-justify col-sm-4 col-lg-6">
    
     <div class="panel panel-default">
 		 <div class="panel-body">
-		<p>Liste des compétences</p>
+		<p>Liste des réalisations</p>
     <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>Compétences</th>
-			<th>Niveau en %</th>
-			<th>Suppression</th>
-			<th>Modification</th>
+			<th>Réalisations pro</th>
 		</tr>
 	</thead>
 <tbody>
 <tr>
-
-		<td>TD 01</td>
-		<td>TD 02</td>
-<td><a href="#" class="btn btn-danger btn-xs">supprimer</a></td>
-  <td><a href="#"  class="btn btn-success btn-xs">modifier</a></td>
+<?php while ($ligne_realisation = $sql->fetch()) { ?>
+		<td><?php echo $ligne_realisation['r_titre']; ?></td>
+		<td><?php echo $ligne_realisation['r_soustitre']; ?></td>
+		<td colspan="2"><?php echo $ligne_realisation['r_dates']; ?></td>
+		</tr>
+	<tr>
+		<td colspan="4"><?php echo $ligne_realisation['r_description']; ?></td>
+		</tr>
+	<tr>
+		<td colspan="2"><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
+  		<td colspan="2"><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-success btn-xs">modifier</a></td>
+  
 	</tr>
+<?php }	?>
 </tbody>
 </table>
 		</div>
 		</div>
    </div>
-    <div class="col-sm-4 col-lg-4 text-justify">
+    <div class="col-sm-4 col-lg-6">
     <div class="panel panel-default">
 		 <div class="panel-body">
-			<h5>Insertion d'une compétence</h5>
+			<h5>Insertion d'une réalisation</h5>
 			<hr>
 		<!--formulaire d'insertion-->
-			<form action="competences.php" method="post">
+			<form action="realisations.php" method="post">
 				<div class="form-group">
-				<label for="competence">Compétence</label>
-				<input type="text" name="competence" id="competence" placeholder="Insérer une compétence" class="form-control">
+				<label for="r_titre">Titre réalisation.</label>
+				<input name="r_titre" type="text" required="required" class="form-control" id="r_titre" placeholder="Insérer le titre">
 				</div>
 				<div class="form-group">
-				<label for="c_niveau">Niveau</label>
-				<input type="text" name="c_niveau" id="c_niveau" placeholder="Insérer le niveau" class="form-control">
+				<label for="r_soustitre">Sous-titre réalisation</label>
+				<input type="text" required="required" name="r_soustitre" id="r_soustitre" placeholder="Insérer le sous-titre" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez</button>
+				<div class="form-group">
+				<label for="r_dates">Dates</label>
+				<input type="text" required="required" name="r_dates" id="r_dates" placeholder="Insérer les dates" class="form-control">
+				</div>
+				<div class="form-group">
+				<label for="r_description">Description de la réalisation</label>
+				<textarea name="r_description" id="r_description" class="form-control"></textarea>
+				</div>
+				<button type="submit" class="btn btn-info btn-block">Insérez une nelle réalisation</button>
 			</form>
 		</div>
 	</div>
@@ -118,13 +162,11 @@
     </div>
   </div>
   <hr>
-  <div class="row sombre">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Pied de page </h4>
-      <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
-    </div>
-  </div>
-  <hr>
+	  <div class="row">
+		  <!--	 footer en include-->
+	<?php include("include_foot.php"); ?>
+	  </div>
+	<hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script>
