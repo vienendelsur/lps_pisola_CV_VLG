@@ -66,7 +66,7 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
 		$nbr_reseaux = $sql->rowCount();
 		//$ligne_loisir = $sql->fetch();
 	?>
-      <h4 class="well">Il y a <?php echo $nbr_reseaux; ?> reseau<?php echo ($nbr_reseaux>1)?'x':'' ?> </h4>
+      <h4 class="well">Il y a <?php echo $nbr_reseaux; ?> réseau<?php echo ($nbr_reseaux>1)?'x':'' ?> </h4>
     </div>
   </div>
   

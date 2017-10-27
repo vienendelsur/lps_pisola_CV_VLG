@@ -38,7 +38,7 @@
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-center">
     <div class="col-md-6 col-lg-5 text-left">
-		<br><br><br><br><br>
+		<br><br>
     	<div class="panel panel-default">
 		  <div class="panel-body">
 				<address>

@@ -8,11 +8,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse fond_nav" id="defaultNavbar1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Mon profil<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="profil.php">Mon profil<span class="sr-only">(current)</span></a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Parcours<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="formations.php">Formations</a></li>
             <li><a href="experiences.php">Expériences</a></li>
+            <li><a href="formations.php">Formations</a></li>
             <li><a href="realisations.php">Réalisations</a></li>
             <li class="divider"></li>
             <li><a href="#">Lien à part</a></li>
@@ -24,7 +24,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="competences.php">Compétences</a></li>
             <li><a href="loisirs.php">Loisirs</a></li>
-            <li><a href="reseaux.php">Reseaux</a></li>
+            <li><a href="reseaux.php">Réseaux sociaux</a></li>
             <li class="divider"></li>
             <li><a href="#">Lien à part</a></li>
             <li class="divider"></li>
