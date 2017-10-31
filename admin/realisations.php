@@ -2,10 +2,10 @@
 <?php
 // gestion des contenus de la BDD compétences
 //insertion d'une compétence
-if(isset($_POST['r_titre'])) {// si on a posté une nouvelle comp.
-	if($_POST['r_titre']!='' && $_POST['r_soustitre']!='' && $_POST['r_dates']!='' && $_POST['r_description']!='') {// si compétence n'est pas vide
+if(isset($_POST['r_titre'])) {// si on a posté une nouvelle réal.
+	if($_POST['r_titre']!='' && $_POST['r_dates']!='' && $_POST['r_soustitre']!='' && $_POST['r_description']!='') {// si tritre réal n'est pas vide
 		$r_titre = addslashes($_POST['r_titre']);
-		$r_soustitre = addslashes($_POST['r_soustitre']);
+		$r_soustitre = addslashes($_POST['r_soustitre']);		
 		$r_dates = addslashes($_POST['r_dates']);
 		$r_description = addslashes($_POST['r_description']);
 		
@@ -14,9 +14,8 @@ if(isset($_POST['r_titre'])) {// si on a posté une nouvelle comp.
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
-// suppression d'une compétence
-
-if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'url
+// suppression d'une réalisation
+if(isset($_GET['id_realisation'])) {// on récupère la réalisation par son id ds l'url
 	$efface = $_GET['id_realisation'];//je mets cela ds une variable
 	
 	$sql = " DELETE FROM t_realisations WHERE id_realisation = '$efface' ";
@@ -34,7 +33,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
+<title>Admin : réalisations <?php echo($ligne_utilisateur['pseudo']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -62,18 +61,18 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 </div>
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
-    <div class="col-lg-6"><?php
+    <div class="col-lg-8"><?php
 		$sql = $pdoCV->prepare(" SELECT * FROM t_realisations WHERE utilisateur_id ='1' ");
 		$sql->execute();
 		$nbr_realisations = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
 	?>
-      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> réalisation<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
+      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> réalisations<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
     </div>
   </div>
   
    <div class="row">
-    <div class="text-justify col-sm-4 col-lg-6">
+    <div class="text-justify col-sm-4 col-lg-8">
    
     <div class="panel panel-default">
 		 <div class="panel-body">
@@ -81,23 +80,23 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
     <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>Réalisations pro</th>
+			<th>Réalisations</th>
+			<th>Dates</th>
+			<th>Sous-titre</th>
+			<th>Description</th>
+			<th>Supprimer</th>
+			<th>Modifier</th>
 		</tr>
 	</thead>
 <tbody>
 <tr>
 <?php while ($ligne_realisation = $sql->fetch()) { ?>
 		<td><?php echo $ligne_realisation['r_titre']; ?></td>
-		<td><?php echo $ligne_realisation['r_soustitre']; ?></td>
-		<td colspan="2"><?php echo $ligne_realisation['r_dates']; ?></td>
-		</tr>
-	<tr>
-		<td colspan="4"><?php echo $ligne_realisation['r_description']; ?></td>
-		</tr>
-	<tr>
-		<td colspan="2"><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
-  		<td colspan="2"><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-success btn-xs">modifier</a></td>
-  
+		<td><?php echo $ligne_realisation['r_dates']; ?></td>
+	<td><?php echo $ligne_realisation['r_soustitre']; ?></td>
+	<td><?php echo $ligne_realisation['r_description']; ?></td>
+<td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
+  <td><a href="modif_realisation.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
 </tbody>
@@ -105,7 +104,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 		</div>
 		</div>
    </div>
-    <div class="col-sm-4 col-lg-6">
+    <div class="col-sm-4 col-lg-4 text-justify">
     <div class="panel panel-default">
 		 <div class="panel-body">
 			<h5>Insertion d'une réalisation</h5>
@@ -113,22 +112,22 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 		<!--formulaire d'insertion-->
 			<form action="realisations.php" method="post">
 				<div class="form-group">
-				<label for="r_titre">Titre réalisation.</label>
-				<input name="r_titre" type="text" required="required" class="form-control" id="r_titre" placeholder="Insérer le titre">
-				</div>
-				<div class="form-group">
-				<label for="r_soustitre">Sous-titre réalisation</label>
-				<input type="text" required="required" name="r_soustitre" id="r_soustitre" placeholder="Insérer le sous-titre" class="form-control">
+				<label for="r_titre">Réalisation : titre</label>
+				<input type="text" name="r_titre" id="r_titre" placeholder="Insérer le titre de la réal." class="form-control">
 				</div>
 				<div class="form-group">
 				<label for="r_dates">Dates</label>
-				<input type="text" required="required" name="r_dates" id="r_dates" placeholder="Insérer les dates" class="form-control">
+				<input type="text" name="r_dates" id="r_dates" placeholder="Insérer les dates" class="form-control">
 				</div>
 				<div class="form-group">
-				<label for="r_description">Description de la réalisation</label>
-				<textarea name="r_description" id="r_description" class="form-control"></textarea>
+				<label for="r_soustitre">Sous-titre</label>
+				<input type="text" name="r_soustitre" id="r_soustitre" placeholder="Insérer le sous-titre" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez une nelle réalisation</button>
+				<div class="form-group">
+				<label for="r_description">Description</label>
+				<textarea name="r_description" id="r_description" class="form-control" placeholder="Insérer la description"></textarea>
+				</div>
+				<button type="submit" class="btn btn-info btn-block">Insérez une réalisation</button>
 			</form>
 		</div>
 	</div>
