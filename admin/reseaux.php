@@ -3,10 +3,11 @@
 // gestion des contenus de la BDD compétences
 //insertion d'une compétence
 if(isset($_POST['reseau'])) {// si on a posté un loisir.
-	if($_POST['reseau']!='') {// si loisir n'est pas vide
+	if($_POST['reseau']!='' && $_POST['url']!='') {// si loisir n'est pas vide
 		$reseau = addslashes($_POST['reseau']);
+		$url = addslashes($_POST['url']);
 		
-		$pdoCV->exec(" INSERT INTO t_reseaux VALUES (NULL, '$reseau', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_reseaux VALUES (NULL, '$reseau', '$url', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
 		header("location: reseaux.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
@@ -79,7 +80,8 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
     <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>Réseaux</th>
+			<th>Nom des réseaux</th>
+			<th>URL</th>
 			<th>Suppression</th>
 			<th>Modification</th>
 		</tr>
@@ -87,9 +89,10 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
 <tbody>
 <tr>
 <?php while ($ligne_reseau = $sql->fetch()) { ?>
-	<td><?php echo $ligne_reseau['reseau']; ?></td>
-<td><a href="réseaux.php?id_loisir=<?php echo $ligne_reseau['id_reseau']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
-  <td><a href="modif_réseau.php?id_loisir=<?php echo $ligne_reseau['id_reseau']; ?>" class="btn btn-success btn-xs">modifier</a></td>
+	<td><a href="<?php echo $ligne_reseau['url']; ?>"><?php echo $ligne_reseau['reseau']; ?></a></td>
+	<td><a href="#"><?php echo $ligne_reseau['url']; ?></a></td>
+<td><a href="reseaux.php?id_reseau=<?php echo $ligne_reseau['id_reseau']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
+  <td><a href="modif_réseau.php?id_reseau=<?php echo $ligne_reseau['id_reseau']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
 </tbody>
@@ -105,8 +108,12 @@ if(isset($_GET['id_reseau'])) {// on récupère la comp. par son id ds l'url
 		<!--formulaire d'insertion-->
 			<form action="reseaux.php" method="post">
 				<div class="form-group">
-				<label for="loisir">réseau</label>
-				<input type="text" name="reseau" id="reseau" placeholder="Insérer un réseau" class="form-control">
+				<label for="reseau">réseau</label>
+				<input type="text" name="reseau" id="reseau" placeholder="Insérer un réseau..." class="form-control">
+				</div>
+				<div class="form-group">
+				<label for="url">URL</label>
+				<input type="text" name="url" id="url" placeholder="... et son url" class="form-control">
 				</div>
 				<button type="submit" class="btn btn-info btn-block">Insérez un réseau</button>
 			</form>

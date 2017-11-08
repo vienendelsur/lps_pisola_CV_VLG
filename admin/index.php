@@ -6,6 +6,9 @@
 <?php
 		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
 		$ligne_utilisateur = $sql->fetch();
+	
+		$sql = $pdoCV->query(" SELECT * FROM t_titre_cv WHERE utilisateur_id ='1' ORDER BY id_titre_cv DESC LIMIT 1  "); 
+		$ligne_titrecv = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,8 +32,9 @@
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
 	  <br>
-    <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+    <div class="col-md-6 col-md-offset-3 fond_fonce text-center">
+      <h1>Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+		<p>Titre du CV : <?php echo($ligne_titrecv['titre_cv']); ?></p>
     </div>
   </div>
   <hr>
@@ -63,9 +67,9 @@
     <div class="text-justify col-sm-4">« Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le temps de me dire : « Je m’endors. » Et, une demi-heure après, la pensée qu’il était temps de chercher le sommeil m’éveillait ; je voulais poser le volume que je croyais avoir encore dans les mains et souffler ma lumière ; je n’avais pas cessé en dormant de faire des réflexions sur ce que je venais de lire, mais ces réflexions avaient pris un tour un peu particulier ; ... »</div>
     <div class="col-sm-4 text-justify">Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo. Macondo era entonces una aldea de 20 casas de barro y cañabrava construidas a la orilla de un río de aguas diáfanas que se precipitaban por un lecho de piedras pulidas, blancas y enormes como huevos prehistóricos. El mundo era tan reciente, que muchas cosas carecían de nombre, y para mencionarlas había que señalarlas con el dedo</div>
     <div class="col-sm-4 text-justify">
-		<h2>Accroche du site</h2>
+		<h2><?php echo($ligne_titrecv['accroche']); ?></h2>
 		<blockquote>
-  			<p><?php echo($ligne_utilisateur['accroche']); ?></p>
+  			<p>Accroche du site</p>
 		</blockquote>
 	</div>
   </div>
