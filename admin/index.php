@@ -34,7 +34,6 @@
 	  <br>
     <div class="col-md-6 col-md-offset-3 fond_fonce text-center">
       <h1>Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
-		<p>Titre du CV : <?php echo($ligne_titrecv['titre_cv']); ?></p>
     </div>
   </div>
   <hr>
@@ -45,18 +44,18 @@
 		<br><br>
     	<div class="panel panel-default">
 		  <div class="panel-body">
+					<address>
+				<strong><?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></strong><br>
+				<?php echo($ligne_utilisateur['adresse']).'<br>'.($ligne_utilisateur['code_postal']).' '.($ligne_utilisateur['ville']); ?><br>
+				<abbr title="Phone">Tél :</abbr> <?php echo($ligne_utilisateur['telephone']); ?>
+				</address>
 				<address>
-			<strong><?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></strong><br>
-			<?php echo($ligne_utilisateur['adresse']).'<br>'.($ligne_utilisateur['code_postal']).' '.($ligne_utilisateur['ville']); ?><br>
-			<abbr title="Phone">Tél :</abbr> <?php echo($ligne_utilisateur['telephone']); ?>
-			</address>
-			<address>
-			<strong><?php echo($ligne_utilisateur['pseudo']); ?></strong><br>
-			<a href="mailto:<?php echo($ligne_utilisateur['email']); ?>"><?php echo($ligne_utilisateur['email']); ?></a>
-			</address>
-			<address>
-			<a href="<?php echo($ligne_utilisateur['site_web']); ?>"><strong><?php echo($ligne_utilisateur['site_web']); ?></strong></a>
-			</address>
+				<strong><?php echo($ligne_utilisateur['pseudo']); ?></strong><br>
+				<a href="mailto:<?php echo($ligne_utilisateur['email']); ?>"><?php echo($ligne_utilisateur['email']); ?></a>
+				</address>
+				<address>
+				<a href="<?php echo($ligne_utilisateur['site_web']); ?>"><strong><?php echo($ligne_utilisateur['site_web']); ?></strong></a>
+				</address>
 			</div>
 		</div>
 	  </div>
@@ -64,13 +63,18 @@
 </div>
   <hr>
   <div class="row">
-    <div class="text-justify col-sm-4">« Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n’avais pas le temps de me dire : « Je m’endors. » Et, une demi-heure après, la pensée qu’il était temps de chercher le sommeil m’éveillait ; je voulais poser le volume que je croyais avoir encore dans les mains et souffler ma lumière ; je n’avais pas cessé en dormant de faire des réflexions sur ce que je venais de lire, mais ces réflexions avaient pris un tour un peu particulier ; ... »</div>
-    <div class="col-sm-4 text-justify">Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo. Macondo era entonces una aldea de 20 casas de barro y cañabrava construidas a la orilla de un río de aguas diáfanas que se precipitaban por un lecho de piedras pulidas, blancas y enormes como huevos prehistóricos. El mundo era tan reciente, que muchas cosas carecían de nombre, y para mencionarlas había que señalarlas con el dedo</div>
+    <div class="text-justify col-sm-4">
+		<h4>Titre du Port-Folio</h4>
+		<p><?php echo($ligne_titrecv['titre_cv']); ?></p></div>
     <div class="col-sm-4 text-justify">
-		<h2><?php echo($ligne_titrecv['accroche']); ?></h2>
+	  <h4>Accroche</h4>
+		<p><?php echo($ligne_titrecv['accroche']); ?></p>
+    </div>
+    <div class="col-sm-4 text-justify">
+		<h4>Avatar :</h4>
 		<blockquote>
-  			<p>Accroche du site</p>
-		</blockquote>
+			<img src="img/<?php echo($ligne_titrecv['logo']); ?>" alt="avatar patrick isola" width="175" height="147">
+	  </blockquote>
 	</div>
   </div>
   <hr>
