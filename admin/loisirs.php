@@ -1,8 +1,8 @@
 <?php require 'connexion.php'; ?>
 <?php
-// gestion des contenus de la BDD compétences
-//insertion d'une compétence
-if(isset($_POST['loisir'])) {// si on a posté un loisir.
+// gestion des contenus de la BDD  : loisirs
+//insertion d'un loisir
+if(isset($_POST['loisir'])) {// si on a posté une nouvelle comp.
 	if($_POST['loisir']!='') {// si loisir n'est pas vide
 		$loisir = addslashes($_POST['loisir']);
 		
@@ -11,10 +11,10 @@ if(isset($_POST['loisir'])) {// si on a posté un loisir.
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
-// suppression d'une compétence
 
-if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
-	$efface = $_GET['id_loisir'];//je mets cela ds une variable
+// suppression d'un loisir
+if(isset($_GET['id_loisir'])) {// on récupère le loisir par son id dans l'url
+	$efface = $_GET['id_loisir'];//je mets cela dans une variable
 	
 	$sql = " DELETE FROM t_loisirs WHERE id_loisir = '$efface' ";
 	$pdoCV->query($sql);// on peut avec exec aussi si on veut
@@ -31,7 +31,7 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
+<title>Admin : loisirs <?php echo($ligne_utilisateur['pseudo']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -59,12 +59,11 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
 </div>
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
-    <div class="col-lg-8">
-    <?php
+    <div class="col-lg-8"><?php
 		$sql = $pdoCV->prepare(" SELECT * FROM t_loisirs WHERE utilisateur_id ='1' ");
 		$sql->execute();
 		$nbr_loisirs = $sql->rowCount();
-		//$ligne_loisir = $sql->fetch();
+		//$ligne_competence = $sql->fetch();
 	?>
       <h4 class="well">Il y a <?php echo $nbr_loisirs; ?> loisir<?php echo ($nbr_loisirs>1)?'s':'' ?> </h4>
     </div>
@@ -75,7 +74,7 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
    
     <div class="panel panel-default">
 		 <div class="panel-body">
-		<p>Liste des compétences</p>
+		<p>Liste des loisirs</p>
     <table class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -87,8 +86,8 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
 <tbody>
 <tr>
 <?php while ($ligne_loisir = $sql->fetch()) { ?>
-	<td><?php echo $ligne_loisir['loisir']; ?></td>
-<td><a href="loisirs.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-danger btn-xs">Supprimer</a></td>
+		<td><?php echo $ligne_loisir['loisir']; ?></td>
+<td><a href="loisirs.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
   <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
@@ -104,11 +103,11 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
 			<hr>
 		<!--formulaire d'insertion-->
 			<form action="loisirs.php" method="post">
-				<div class="form-group">
-				<label for="loisir">Loisir</label>
-				<input type="text" name="loisir" id="loisir" placeholder="Insérer un loisir" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez un loisir</button>
+					<div class="form-group">
+					<label for="loisir">Loisir</label>
+					<input type="text" name="loisir" id="loisir" placeholder="Insérer un loisir" class="form-control">
+					</div>
+				<button type="submit" class="btn btn-info btn-block">Insérez un nouveau loisir</button>
 			</form>
 		</div>
 	</div>
@@ -117,7 +116,28 @@ if(isset($_GET['id_loisir'])) {// on récupère la comp. par son id ds l'url
   <hr>
   <div class="row">
     <div class="text-center col-md-12">
-      <div class="well">&nbsp;</div>
+      <div class="well"><strong>Composants Bootstrap de base</strong></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <h4>Boutons</h4>
+      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
+      <button type="button" class="btn btn-info btn-sm">Info bouton</button>
+      <button type="button" class="btn btn-success btn-sm">Success bouton</button>
+    </div>
+    <div class="text-center col-sm-4">
+      <h4>Labels ou étiquettes Bootstrap</h4>
+      <p>Using the insert panel, add labels to your page by using the label component.</p>
+      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
+    <div class="text-center col-sm-4">
+      <h4><strong>Glyphicons</strong></h4>
+      <p>You can also add glyphicons to your page from within the insert panel.</p>
+      <div class="row">
+        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
+        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
+        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+      </div>
     </div>
   </div>
   <hr>

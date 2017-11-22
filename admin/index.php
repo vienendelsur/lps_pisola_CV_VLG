@@ -40,7 +40,7 @@
 </div>
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-center">
-    <div class="col-md-6 col-lg-5 text-left">
+    <div class="col-md-6 text-left col-lg-5">
 		<br><br>
     	<div class="panel panel-default">
 		  <div class="panel-body">

@@ -1,11 +1,11 @@
 <?php require 'connexion.php'; ?>
 <?php
-// gestion des contenus de la BDD compétences
-//insertion d'une compétence
-if(isset($_POST['r_titre'])) {// si on a posté une nouvelle réal.
-	if($_POST['r_titre']!='' && $_POST['r_dates']!='' && $_POST['r_soustitre']!='' && $_POST['r_description']!='') {// si tritre réal n'est pas vide
+// gestion des contenus de la BDD réalisations
+//insertion d'une réalisation
+if(isset($_POST['r_titre'])) {// si on a posté une nouvelle comp.
+	if($_POST['r_titre']!='' && $_POST['r_soustitre']!='' && $_POST['r_dates']!='' && $_POST['r_description']!='') {// si réalisation n'est pas vide
 		$r_titre = addslashes($_POST['r_titre']);
-		$r_soustitre = addslashes($_POST['r_soustitre']);		
+		$r_soustitre = addslashes($_POST['r_soustitre']);
 		$r_dates = addslashes($_POST['r_dates']);
 		$r_description = addslashes($_POST['r_description']);
 		
@@ -14,8 +14,9 @@ if(isset($_POST['r_titre'])) {// si on a posté une nouvelle réal.
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
-// suppression d'une réalisation
-if(isset($_GET['id_realisation'])) {// on récupère la réalisation par son id ds l'url
+
+// suppression d'une compétence
+if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'url
 	$efface = $_GET['id_realisation'];//je mets cela ds une variable
 	
 	$sql = " DELETE FROM t_realisations WHERE id_realisation = '$efface' ";
@@ -67,7 +68,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la réalisation par son id 
 		$nbr_realisations = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
 	?>
-      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> réalisations<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
+      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> realisation<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
     </div>
   </div>
   
@@ -81,20 +82,18 @@ if(isset($_GET['id_realisation'])) {// on récupère la réalisation par son id 
 	<thead>
 		<tr>
 			<th>Réalisations</th>
-			<th>Dates</th>
-			<th>Sous-titre</th>
-			<th>Description</th>
-			<th>Supprimer</th>
-			<th>Modifier</th>
 		</tr>
 	</thead>
 <tbody>
 <tr>
 <?php while ($ligne_realisation = $sql->fetch()) { ?>
 		<td><?php echo $ligne_realisation['r_titre']; ?></td>
+		<td><?php echo $ligne_realisation['r_soustitre']; ?></td>
 		<td><?php echo $ligne_realisation['r_dates']; ?></td>
-	<td><?php echo $ligne_realisation['r_soustitre']; ?></td>
-	<td><?php echo $ligne_realisation['r_description']; ?></td>
+	</tr>
+	<tr>
+		<td colspan="3"><?php echo $ligne_realisation['r_description']; ?></td>
+	</tr>	
 <td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
   <td><a href="modif_realisation.php?id_realisation=<?php echo $ligne_realisation['id_realisation']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
@@ -112,22 +111,22 @@ if(isset($_GET['id_realisation'])) {// on récupère la réalisation par son id 
 		<!--formulaire d'insertion-->
 			<form action="realisations.php" method="post">
 				<div class="form-group">
-				<label for="r_titre">Réalisation : titre</label>
-				<input type="text" name="r_titre" id="r_titre" placeholder="Insérer le titre de la réal." class="form-control">
-				</div>
-				<div class="form-group">
-				<label for="r_dates">Dates</label>
-				<input type="text" name="r_dates" id="r_dates" placeholder="Insérer les dates" class="form-control">
+				<label for="r_titre">Réalisation</label>
+				<input type="text" name="r_titre" id="r_titre" placeholder="Insérer une réalisation" class="form-control">
 				</div>
 				<div class="form-group">
 				<label for="r_soustitre">Sous-titre</label>
 				<input type="text" name="r_soustitre" id="r_soustitre" placeholder="Insérer le sous-titre" class="form-control">
 				</div>
 				<div class="form-group">
-				<label for="r_description">Description</label>
-				<textarea name="r_description" id="r_description" class="form-control" placeholder="Insérer la description"></textarea>
+				<label for="r_dates">Dates</label>
+				<input type="text" name="r_dates" id="r_dates" placeholder="Insérer les dates" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez une réalisation</button>
+				<div class="form-group">
+				<label for="r_description">Description de la réalisation</label>
+				<textarea name="r_description" id="r_description" class="form-control"></textarea>
+				</div>
+				<button type="submit" class="btn btn-info btn-block">Insérez une nouvelle réalisation</button>
 			</form>
 		</div>
 	</div>

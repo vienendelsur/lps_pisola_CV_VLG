@@ -12,8 +12,8 @@ if(isset($_POST['competence'])) {// si on a posté une nouvelle comp.
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
-// suppression d'une compétence
 
+// suppression d'une compétence
 if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 	$efface = $_GET['id_competence'];//je mets cela ds une variable
 	
