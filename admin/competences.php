@@ -91,7 +91,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 		<td><?php echo $ligne_competence['competence']; ?></td>
 		<td><?php echo $ligne_competence['c_niveau']; ?></td>
 <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
-  <td><a href="modif_competence.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-success btn-xs">modifier</a></td>
+  <td><a href="modif_comp.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
 </tbody>
