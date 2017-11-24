@@ -10,7 +10,7 @@ session_start();// à mettre dans toutes les pages de l'admin
         var_dump($_SESSION);
 	}else{//l'utilisateur n'est pas connecté
 		header('location: sauthentifier.php');		
-}//ferme le else  du if isset
+}//ferme le else du if isset
 
 
 ?>
