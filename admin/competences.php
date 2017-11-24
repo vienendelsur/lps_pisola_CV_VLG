@@ -1,4 +1,19 @@
-<?php require 'connexion.php'; ?>
+<?php require 'connexion.php'; 
+
+session_start();// à mettre dans toutes les pages de l'admin
+	if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){//on établit que la variable de session est passée et contient bien le terme "connexion" 
+		$id_utilisateur=$_SESSION['id_utilisateur'];
+		$prenom=$_SESSION['prenom'];		
+		$nom=$_SESSION['nom'];
+		
+		//echo $_SESSION['connexion'];		
+        var_dump($_SESSION);
+	}else{//l'utilisateur n'est pas connecté
+		header('location: sauthentifier.php');		
+}//ferme le else  du if isset
+
+
+?>
 <?php
 // gestion des contenus de la BDD compétences
 //insertion d'une compétence
@@ -7,13 +22,13 @@ if(isset($_POST['competence'])) {// si on a posté une nouvelle comp.
 		$competence = addslashes($_POST['competence']);
 		$c_niveau = addslashes($_POST['c_niveau']);
 		
-		$pdoCV->exec(" INSERT INTO t_competences VALUES (NULL, '$competence', '$c_niveau', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_competences VALUES (NULL, '$competence', '$c_niveau', '$id_utilisateur') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
 		header("location: competences.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
 }//ferme le if isset du form 
-// suppression d'une compétence
 
+// suppression d'une compétence
 if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 	$efface = $_GET['id_competence'];//je mets cela ds une variable
 	
@@ -27,7 +42,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <head>
 <meta charset="utf-8">
 <?php
-		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='$id_utilisateur' "); 
 		$ligne_utilisateur = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,7 +76,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
     <div class="col-lg-8"><?php
-		$sql = $pdoCV->prepare(" SELECT * FROM t_competences WHERE utilisateur_id ='1' ");
+		$sql = $pdoCV->prepare(" SELECT * FROM t_competences WHERE utilisateur_id ='$id_utilisateur' ");
 		$sql->execute();
 		$nbr_competences = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
@@ -91,7 +106,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 		<td><?php echo $ligne_competence['competence']; ?></td>
 		<td><?php echo $ligne_competence['c_niveau']; ?></td>
 <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
-  <td><a href="modif_competence.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-success btn-xs">modifier</a></td>
+  <td><a href="modif_comp.php?id_competence=<?php echo $ligne_competence['id_competence']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
 </tbody>

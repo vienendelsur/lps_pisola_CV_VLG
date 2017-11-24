@@ -6,6 +6,9 @@
 <?php
 		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
 		$ligne_utilisateur = $sql->fetch();
+	
+		$sql = $pdoCV->query(" SELECT * FROM t_titre_cv WHERE utilisateur_id ='1' ORDER BY id_titre_cv DESC LIMIT 1  "); 
+		$ligne_titrecv = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +18,7 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!--Mes styles-->
-<link rel="stylesheet" type="text/css"href="css/style_admin.css">
+<link rel="stylesheet" type="text/css" href="css/style_admin.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -28,68 +31,42 @@
 <?php include("include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 fond_fonce">
-      <h1 class="text-center">Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
+	  <br>
+    <div class="col-md-6 col-md-offset-3 fond_fonce text-center">
+      <h1>Admin - Port-folio : <?php echo($ligne_utilisateur['prenom']).' '.($ligne_utilisateur['nom']); ?></h1>
     </div>
   </div>
   <hr>
 </div>
 <div class="container"><!--container pour un container fixed width-->
-  <div class="row text-left">
-    
-      <h4 class="well">Il y a </h4>
+  <div class="row text-center">
+    <div class="col-md-6 text-left col-lg-5">
+		<br><br>
+    	<div class="panel panel-default">
+		  <div class="panel-body">
+					
+				METTRE CONTENU ICI
+			</div>
+		</div>
+	  </div>
+    <div class="col-md-6 col-md-offset-3 col-lg-offset-0 col-lg-7"><p>&nbsp;</p><img src="img/popolasca_grate.jpg" alt="Placeholder image" class="img-responsive"></div>
+</div>
+  <hr>
+  <div class="row">
+    <div class="text-justify col-sm-4">
+		<h4>Titre du Port-Folio</h4>
+		<p><?php echo($ligne_titrecv['titre_cv']); ?></p></div>
+    <div class="col-sm-4 text-justify">
+	  <h4>Accroche</h4>
+		<p><?php echo($ligne_titrecv['accroche']); ?></p>
     </div>
-  </div>
-  
-   <div class="row">
-    <div class="text-justify col-sm-4 col-lg-8">
-   
-    <div class="panel panel-default">
-		 <div class="panel-body">
-		<p>Liste des compétences</p>
-    <table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th>Compétences</th>
-			<th>Niveau en %</th>
-			<th>Suppression</th>
-			<th>Modification</th>
-		</tr>
-	</thead>
-<tbody>
-<tr>
-
-		<td>TD 01</td>
-		<td>TD 02</td>
-<td><a href="#" class="btn btn-danger btn-xs">supprimer</a></td>
-  <td><a href="#"  class="btn btn-success btn-xs">modifier</a></td>
-	</tr>
-</tbody>
-</table>
-		</div>
-		</div>
-   </div>
-    <div class="col-sm-4 col-lg-4 text-justify">
-    <div class="panel panel-default">
-		 <div class="panel-body">
-			<h5>Insertion d'une compétence</h5>
-			<hr>
-		<!--formulaire d'insertion-->
-			<form action="competences.php" method="post">
-				<div class="form-group">
-				<label for="competence">Compétence</label>
-				<input type="text" name="competence" id="competence" placeholder="Insérer une compétence" class="form-control">
-				</div>
-				<div class="form-group">
-				<label for="c_niveau">Niveau</label>
-				<input type="text" name="c_niveau" id="c_niveau" placeholder="Insérer le niveau" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez</button>
-			</form>
-		</div>
+    <div class="col-sm-4 text-justify">
+		<h4>Avatar :</h4>
+		<blockquote>
+			<img src="img/<?php echo($ligne_titrecv['logo']); ?>" alt="avatar patrick isola" width="175" height="147">
+	  </blockquote>
 	</div>
-</div>
-</div>
+  </div>
   <hr>
   <div class="row">
     <div class="text-center col-md-12">
@@ -118,13 +95,11 @@
     </div>
   </div>
   <hr>
-  <div class="row sombre">
-    <div class="text-center col-md-6 col-md-offset-3">
-      <h4>Pied de page </h4>
-      <p>Copyright &copy; Mettre date en php &middot; DR : tous droits réservés &middot; <a href="#">Mon site</a></p>
-    </div>
-  </div>
-  <hr>
+	  <div class="row">
+		  <!--	 footer en include-->
+	<?php include("include_foot.php"); ?>
+	  </div>
+	<hr>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script>
