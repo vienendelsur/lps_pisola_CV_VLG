@@ -114,7 +114,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 				<label for="c_niveau">Niveau</label>
 				<input type="text" name="c_niveau" id="c_niveau" placeholder="Insérer le niveau" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-info btn-block">Insérez</button>
+				<button type="submit" class="btn btn-info btn-block">Insérez une nelle compétence</button>
 			</form>
 		</div>
 	</div>
