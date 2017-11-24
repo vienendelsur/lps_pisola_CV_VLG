@@ -1,5 +1,9 @@
 <?php require 'connexion.php'; ?>
 <?php
+
+session_start();//à mettre dans toutes les pages de l'admin (même cette page)
+	$msg_authentification_err='';//on initialise la variable en cas d'erreur
+
 if(isset($_POST['connexion'])){//on envoie le form avec le name du button (on a cliqué dessus)
 	$email = addslashes($_POST['email']);
 	$mdp = addslashes($_POST['mdp']);
@@ -7,7 +11,7 @@ if(isset($_POST['connexion'])){//on envoie le form avec le name du button (on a 
 		$sql->execute();
 		$nbr_utilisateur = $sql->rowCount();//on compte s'il est dans la table, le compte répond 1 s'il y est, 0 s'il n'y est pas 
 			if($nbr_utilisateur==0){//il n'y est pas ! c'est la faute à sarah
-				$msg_auth_err="Erreur d'authentification !";
+				$msg_authentification_err="Erreur d'authentification !";
 			}else{//on le trouve, il est inscrit, grâce à hadi
 				$ligne_utilisateur = $sql->fetch();//on cherche ses infos
 				
@@ -31,7 +35,7 @@ if(isset($_POST['connexion'])){//on envoie le form avec le name du button (on a 
 	<h1>Admin : s'authentifier</h1>
 	<hr>
 	<!--formulaire de connexion à l'admin -->
-	<form action="sauthentifier.php" method="post">
+	<form action="sauthentifier.php" method="post" class="form-signin">
 		<label for="email">Courriel</label>
 			<input type="email" name="email" placeholder="Votre courriel" required>
 			<br>

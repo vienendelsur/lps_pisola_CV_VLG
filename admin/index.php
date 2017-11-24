@@ -1,18 +1,32 @@
-<?php require 'connexion.php'; ?>
+<?php require 'connexion.php'; 
+
+session_start();// à mettre dans toutes les pages de l'admin
+	if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){//on établit que la variable de session est passée et contient bien le terme "connexion" 
+		$id_utilisateur=$_SESSION['id_utilisateur'];
+		$prenom=$_SESSION['prenom'];		
+		$nom=$_SESSION['nom'];
+		
+		//echo $_SESSION['connexion'];		
+        //var_dump($_SESSION);
+	}else{//l'utilisateur n'est pas connecté
+		header('location: sauthentifier.php');		
+}//ferme le else  du if isset
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <?php
-		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='$id_utilisateur' "); 
 		$ligne_utilisateur = $sql->fetch();
 	
-		$sql = $pdoCV->query(" SELECT * FROM t_titre_cv WHERE utilisateur_id ='1' ORDER BY id_titre_cv DESC LIMIT 1  "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_titre_cv WHERE utilisateur_id ='$id_utilisateur' ORDER BY id_titre_cv DESC LIMIT 1  "); 
 		$ligne_titrecv = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
+<title>Admin : <?php echo($ligne_utilisateur['nom']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
