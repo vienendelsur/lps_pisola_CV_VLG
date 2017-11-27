@@ -51,7 +51,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 </head>
 <body>
 <!--nav en include-->
-<?php include("../inc/include_nav.php"); ?>
+<?php include("inc/include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
 	  <br>
@@ -168,7 +168,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
   <hr>
 	  <div class="row">
 		  <!--	 footer en include-->
-	<?php include("../inc/include_foot.php"); ?>
+	<?php include("inc/include_foot.php"); ?>
 	  </div>
 	<hr>
 </div>
