@@ -1,4 +1,19 @@
-<?php require 'connexion.php'; ?>
+<?php require 'connexion.php'; 
+
+session_start();// à mettre dans toutes les pages de l'admin
+	if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){//on établit que la variable de session est passée et contient bien le terme "connexion" 
+		$id_utilisateur=$_SESSION['id_utilisateur'];
+		$prenom=$_SESSION['prenom'];		
+		$nom=$_SESSION['nom'];
+		
+		//echo $_SESSION['connexion'];		
+        //var_dump($_SESSION);
+	}else{//l'utilisateur n'est pas connecté
+		header('location: sauthentifier.php');		
+}//ferme le else du if isset
+
+
+?>
 <?php
 // gestion des contenus de la BDD réalisations
 //insertion d'une réalisation
@@ -9,7 +24,7 @@ if(isset($_POST['r_titre'])) {// si on a posté une nouvelle comp.
 		$r_dates = addslashes($_POST['r_dates']);
 		$r_description = addslashes($_POST['r_description']);
 		
-		$pdoCV->exec(" INSERT INTO t_realisations VALUES (NULL, '$r_titre', '$r_soustitre', '$r_dates', '$r_description', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_realisations VALUES (NULL, '$r_titre', '$r_soustitre', '$r_dates', '$r_description', '$id_utilisateur') ");// $id_utilisateur qui nous vient de la variable de session
 		header("location: realisations.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
@@ -29,7 +44,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 <head>
 <meta charset="utf-8">
 <?php
-		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='$id_utilisateur' "); 
 		$ligne_utilisateur = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +78,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
     <div class="col-lg-8"><?php
-		$sql = $pdoCV->prepare(" SELECT * FROM t_realisations WHERE utilisateur_id ='1' ");
+		$sql = $pdoCV->prepare(" SELECT * FROM t_realisations WHERE utilisateur_id ='$id_utilisateur' ");
 		$sql->execute();
 		$nbr_realisations = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();

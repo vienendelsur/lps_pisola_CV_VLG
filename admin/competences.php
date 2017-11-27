@@ -7,11 +7,25 @@ session_start();// à mettre dans toutes les pages de l'admin
 		$nom=$_SESSION['nom'];
 		
 		//echo $_SESSION['connexion'];		
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
 	}else{//l'utilisateur n'est pas connecté
 		header('location: sauthentifier.php');		
 }//ferme le else du if isset
 
+//pour se déconnecter de l'admin à mettre dans toutes les pages ôssi
+if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
+	
+	$_SESSION['connexion']='';//on vide les variables de session
+	$_SESSION['id_utilisateur']='';
+	$_SESSION['prenom']='';
+	$_SESSION['nom']='';
+		
+		unset($_SESSION['connexion']);
+		session_destroy();
+	header('location:../index.html');	
+}//ferme le if isset de la déconnexion
+
+?>
 
 ?>
 <?php
@@ -22,7 +36,7 @@ if(isset($_POST['competence'])) {// si on a posté une nouvelle comp.
 		$competence = addslashes($_POST['competence']);
 		$c_niveau = addslashes($_POST['c_niveau']);
 		
-		$pdoCV->exec(" INSERT INTO t_competences VALUES (NULL, '$competence', '$c_niveau', '$id_utilisateur') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_competences VALUES (NULL, '$competence', '$c_niveau', '$id_utilisateur') ");// $id_utilisateur qui nous vient de la variable de session
 		header("location: competences.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide

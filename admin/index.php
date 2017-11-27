@@ -12,6 +12,18 @@ session_start();// à mettre dans toutes les pages de l'admin
 		header('location: sauthentifier.php');		
 }//ferme le else  du if isset
 
+//pour se déconnecter de l'admin à mettre dans toutes les pages ôssi
+if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
+	
+	$_SESSION['connexion']='';//on vide les variables de session
+	$_SESSION['id_utilisateur']='';
+	$_SESSION['prenom']='';
+	$_SESSION['nom']='';
+		unset($_SESSION['connexion']);
+		session_destroy();
+	//header('location:../index.html');	
+}//ferme le if isset de la déconnexion
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,7 +38,7 @@ session_start();// à mettre dans toutes les pages de l'admin
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['nom']); ?></title>
+<title>Admin : <?php echo($ligne_utilisateur['code_postal']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">

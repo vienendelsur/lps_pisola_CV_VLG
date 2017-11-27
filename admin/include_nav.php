@@ -42,7 +42,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo($ligne_utilisateur['prenom']); ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Déconnexion</a></li>
+            <li><a href="../index.html?quitter=oui">Déconnexion</a></li>
             <li class="divider"></li>
             <li><a href="#">Site public</a></li>
           </ul>
