@@ -28,7 +28,7 @@
 </head>
 <body>
 <!--nav en include-->
-<?php include("include_nav.php"); ?>
+<?php include("../inc/include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
 	  <br>
@@ -97,7 +97,7 @@
   <hr>
 	  <div class="row">
 		  <!--	 footer en include-->
-	<?php include("include_foot.php"); ?>
+	<?php include("../inc/include_foot.php"); ?>
 	  </div>
 	<hr>
 </div>

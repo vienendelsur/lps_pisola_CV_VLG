@@ -12,7 +12,7 @@ session_start();// à mettre dans toutes les pages de l'admin
 		header('location: sauthentifier.php');		
 }//ferme le else du if isset
 
-//pour se déconnecter de l'admin à mettre dans toutes les pages ôssi
+//pour se déconnecter de l'admin à mettre dans toutes les pages ??? ou juste sur la page login.php ?
 if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
 	
 	$_SESSION['connexion']='';//on vide les variables de session
@@ -22,10 +22,8 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 		
 		unset($_SESSION['connexion']);
 		session_destroy();
-	header('location:../index.html');	
+	header('location:../index.php');	
 }//ferme le if isset de la déconnexion
-
-?>
 
 ?>
 <?php
@@ -77,7 +75,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
 </head>
 <body>
 <!--nav en include-->
-<?php include("include_nav.php"); ?>
+<?php include("../inc/include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
 	  <br>
@@ -179,7 +177,7 @@ if(isset($_GET['id_competence'])) {// on récupère la comp. par son id ds l'url
   <hr>
 	  <div class="row">
 		  <!--	 footer en include-->
-	<?php include("include_foot.php"); ?>
+	<?php include("../inc/include_foot.php"); ?>
 	  </div>
 	<hr>
 </div>

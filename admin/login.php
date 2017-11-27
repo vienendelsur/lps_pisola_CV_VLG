@@ -24,6 +24,18 @@ if(isset($_POST['connexion'])){//on envoie le form avec le name du button (on a 
 			}//ferme le if else
 }//ferme le if isset
 
+//pour se déconnecter de l'admin à mettre dans toutes les pages ôssi
+if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
+	
+	$_SESSION['connexion']='';//on vide les variables de session
+	$_SESSION['id_utilisateur']='';
+	$_SESSION['prenom']='';
+	$_SESSION['nom']='';
+		unset($_SESSION['connexion']);
+		session_destroy();
+	header('location:../index.php');	
+}//ferme le if isset de la déconnexion
+
 ?>
 <!doctype html>
 <html>
@@ -35,7 +47,7 @@ if(isset($_POST['connexion'])){//on envoie le form avec le name du button (on a 
 	<h1>Admin : s'authentifier</h1>
 	<hr>
 	<!--formulaire de connexion à l'admin -->
-	<form action="sauthentifier.php" method="post" class="form-signin">
+	<form action="login.php" method="post" class="form-signin">
 		<label for="email">Courriel</label>
 			<input type="email" name="email" placeholder="Votre courriel" required>
 			<br>

@@ -12,17 +12,6 @@ session_start();// à mettre dans toutes les pages de l'admin
 		header('location: sauthentifier.php');		
 }//ferme le else  du if isset
 
-//pour se déconnecter de l'admin à mettre dans toutes les pages ôssi
-if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
-	
-	$_SESSION['connexion']='';//on vide les variables de session
-	$_SESSION['id_utilisateur']='';
-	$_SESSION['prenom']='';
-	$_SESSION['nom']='';
-		unset($_SESSION['connexion']);
-		session_destroy();
-	//header('location:../index.html');	
-}//ferme le if isset de la déconnexion
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +43,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 </head>
 <body>
 <!--nav en include-->
-<?php include("include_nav.php"); ?>
+<?php include("../inc/include_nav.php"); ?>
 <div class="container-fluid geometrique"><!--container-fluid pour un container full width-->
   <div class="row">
 	  <br>
@@ -133,7 +122,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
   <hr>
 	  <div class="row">
 		  <!--	 footer en include-->
-	<?php include("include_foot.php"); ?>
+	<?php include("../inc/include_foot.php"); ?>
 	  </div>
 	<hr>
 </div>
