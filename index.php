@@ -6,7 +6,7 @@ session_start();// à mettre dans toutes les pages de l'admin
 		$prenom=$_SESSION['prenom'];		
 		$nom=$_SESSION['nom'];
 		
-		//echo $_SESSION['connexion'];		
+		echo $_SESSION['connexion'];		
         //var_dump($_SESSION);
 	}else{//l'utilisateur n'est pas connecté
 		header('location: login.php');		
