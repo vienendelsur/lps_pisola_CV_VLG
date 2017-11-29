@@ -9,7 +9,7 @@ session_start();// à mettre dans toutes les pages de l'admin
 		//echo $_SESSION['connexion'];		
         //var_dump($_SESSION);
 	}else{//l'utilisateur n'est pas connecté
-		header('location: sauthentifier.php');		
+		header('location: login.php');		
 }//ferme le else du if isset
 
 //pour se déconnecter de l'admin à mettre dans toutes les pages ??? ou juste sur la page login.php ?
