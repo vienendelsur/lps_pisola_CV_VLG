@@ -50,6 +50,9 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin : réalisations <?php echo($ligne_utilisateur['pseudo']); ?></title>
+	
+<!--CKEditor-->
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -83,7 +86,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 		$nbr_realisations = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
 	?>
-      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> realisation<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
+      <h4 class="well">Il y a <?php echo $nbr_realisations; ?> réalisation<?php echo ($nbr_realisations>1)?'s':'' ?> </h4>
     </div>
   </div>
   
@@ -139,8 +142,11 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 				</div>
 				<div class="form-group">
 				<label for="r_description">Description de la réalisation</label>
-				<textarea name="r_description" id="r_description" class="form-control"></textarea>
+				<textarea name="r_description" id="editor1" class="form-control">il est là on le voit </textarea>
 				</div>
+				<script>
+					CKEDITOR.replace('editor1');
+				</script>
 				<button type="submit" class="btn btn-info btn-block">Insérez une nouvelle réalisation</button>
 			</form>
 		</div>

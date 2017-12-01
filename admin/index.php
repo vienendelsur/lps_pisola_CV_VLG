@@ -39,7 +39,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['code_postal']); ?></title>
+<title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">

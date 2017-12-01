@@ -75,8 +75,7 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
   </div>
   
    <div class="row">
-    <div class="text-justify col-sm-4 col-lg-6">
-   
+    <div class="text-justify col-sm-4 col-lg-9">
     <div class="panel panel-default">
 		 <div class="panel-body">
 		   <p>Liste des formations</p>
@@ -107,8 +106,14 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 		</div>
 		</div>
    </div>
-    <div class="col-sm-4 col-lg-6">
-    <div class="panel panel-default">
+    <div class="col-sm-4 col-lg-3">
+		<p class="well">&nbsp;</p>
+	   </div>
+   </div>
+  <div class="row">
+    <div class="col-lg-10">
+	   
+	   <div class="panel panel-default">
 		 <div class="panel-body">
 			<h5>Insertion d'une formation</h5>
 			<hr>
@@ -137,8 +142,12 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 			</form>
 		</div>
 	</div>
-</div>
-</div>
+		 
+	   </div>
+    <div class="col-lg-2">
+		<p class="well">&nbsp;</p>
+	  </div>
+  </div>
   <hr>
   <div class="row">
     <div class="text-center col-md-12">
