@@ -47,10 +47,10 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
     <hr>
     <div class="row">
       <div class="col-xs-6">
-        <h1><?php echo($ligne_utilisateur['pseudo']); ?></h1>
+        <h1><?php echo($ligne_titrecv['titre_cv']); ?></h1>
       </div>
       <div class="col-xs-6">
-        <p class="text-right"><a href="">Download my Resume <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></p>
+        <p class="text-right"><a href="#">Téléchargez mon CV papier <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></p>
       </div>
     </div>
     <hr>
@@ -59,25 +59,26 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
         <div class="media">
           <div class="media-left"> <a href="#"> <img class="media-object img-rounded" src="images/115X115.gif" alt="..."> </a> </div>
           <div class="media-body">
-            <h2 class="media-heading">Web Developer</h2>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, neque, in, accusamus optio architecto debitis dolor animi placeat ut ab corporis laboriosam itaque. Nobis, sapiente quo dolorum ut quod possimus doloremque suscipit ad doloribus quam dolor </div>
+            <h2 class="media-heading"><?php echo($ligne_utilisateur['pseudo']); ?></h2>
+			  <p><?php echo($ligne_titrecv['accroche']); ?></p>
+			</div>
         </div>
       </div>
       <div class="col-xs-5 well">
         <div class="row">
           <div class="col-lg-6">
-            <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : 123-456-7890</h4>
+            <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> <?php echo($ligne_utilisateur['pseudo']); ?></h4>
           </div>
           <div class="col-lg-6">
-            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> : john@example.com</h4>
+            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <?php echo($ligne_utilisateur['pseudo']); ?></h4>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <h4><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> : San Francisco, CA</h4>
+            <h4><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <?php echo($ligne_utilisateur['pseudo']); ?></h4>
           </div>
           <div class="col-lg-6">
-            <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : 123-456-7890</h4>
+            <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> <?php echo($ligne_utilisateur['pseudo']); ?></h4>
           </div>
         </div>
       </div>
@@ -85,7 +86,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
     <hr>
     <div class="row">
       <div class="col-sm-8 col-lg-7">
-        <h2>Education</h2>
+        <h2>Formation initiale &amp; diplômes</h2>
         <hr>
         <div class="row">
         	<div class="col-xs-6"><h4>College of Web Design</h4></div>
@@ -107,7 +108,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
 </div>
       <div class="col-sm-4 col-lg-5">
-        <h2>Skill Set</h2>
+        <h2>Compétences</h2>
         <hr>
         <!-- Green Progress Bar -->
         <div class="progress">
@@ -137,7 +138,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 </div>
     </div>
     <hr>
-    <h2>Work Experience</h2>
+    <h2>Expériences pro</h2>
 <hr>
     <div class="row">
       <div class="col-lg-6">
@@ -176,7 +177,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
       </div>
     </div>
     <hr>
-    <h2>Portfolio</h2>
+    <h2>Port-folio</h2>
     <hr>
     <div class="container">
     	<div class="row">
@@ -194,7 +195,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
     	</div>
     </div>
     <hr>
-    <h2>Contact</h2>
+    <h2>Contactez-moi</h2>
     <hr>
   </div>
   <div class="container">
@@ -233,7 +234,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <p>Copyright © MyWebsite. All rights reserved.</p>
+        <p>© MonSiteWeb. DR - <a href="admin/index.php" title="Admin Patrick Isola" target="_blank">Admin</a></p>
       </div>
     </div>
   </div>

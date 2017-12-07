@@ -32,6 +32,7 @@
             <li><a href="#">Autre lien à part</a></li>
           </ul>
         </li>
+		  <li class=""><a href="messages.php">Messages</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
