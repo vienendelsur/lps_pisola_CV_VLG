@@ -91,12 +91,3 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 <script src="js/bootstrap.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
