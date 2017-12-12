@@ -36,7 +36,7 @@ if(isset($_POST['f_titre'])) {// si on a posté une nouvelle comp.
 		$f_dates = addslashes($_POST['f_dates']);
 		$f_description = addslashes($_POST['f_description']);
 		
-		$pdoCV->exec(" INSERT INTO t_formations VALUES (NULL, '$f_titre', '$f_soustitre', '$f_dates', '$f_description', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_formations VALUES (NULL, '$f_titre', '$f_soustitre', '$f_dates', '$f_description', '$id_utilisateur' ");//mettre $id_utilisateur quand on l'aura dans la variable de session
 		header("location: formations.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
@@ -56,7 +56,7 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 <head>
 <meta charset="utf-8">
 <?php
-		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='1' "); 
+		$sql = $pdoCV->query(" SELECT * FROM t_utilisateurs WHERE id_utilisateur ='$id_utilisateur' "); 
 		$ligne_utilisateur = $sql->fetch();
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,7 +92,7 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-left">
     <div class="col-lg-6"><?php
-		$sql = $pdoCV->prepare(" SELECT * FROM t_formations WHERE utilisateur_id ='1' ");
+		$sql = $pdoCV->prepare(" SELECT * FROM t_formations WHERE utilisateur_id ='$id_utilisateur' ");
 		$sql->execute();
 		$nbr_formations = $sql->rowCount();
 		//$ligne_competence = $sql->fetch();
@@ -134,7 +134,7 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 		</div>
    </div>
     <div class="col-sm-4 col-lg-3">
-		<p class="well">&nbsp;</p>
+		<p class="well text-center"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></p>
 	   </div>
    </div>
   <div class="row">
@@ -168,41 +168,12 @@ if(isset($_GET['id_formation'])) {// on récupère la comp. par son id ds l'url
 				<button type="submit" class="btn btn-info btn-block">Insérez une nelle formation</button>
 			</form>
 		</div>
-	</div>
-		 
-	   </div>
-    <div class="col-lg-2">
-		<p class="well">&nbsp;</p>
+	</div> 
+</div>
+    <div class="col-sm-4 col-lg-2"><p class="well text-center"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
 	  </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="text-center col-md-12">
-      <div class="well"><strong>Composants Bootstrap de base</strong></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <h4>Boutons</h4>
-      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
-      <button type="button" class="btn btn-info btn-sm">Info bouton</button>
-      <button type="button" class="btn btn-success btn-sm">Success bouton</button>
-    </div>
-    <div class="text-center col-sm-4">
-      <h4>Labels ou étiquettes Bootstrap</h4>
-      <p>Using the insert panel, add labels to your page by using the label component.</p>
-      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
-    <div class="text-center col-sm-4">
-      <h4><strong>Glyphicons</strong></h4>
-      <p>You can also add glyphicons to your page from within the insert panel.</p>
-      <div class="row">
-        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-      </div>
-    </div>
-  </div>
-  <hr>
+<hr>
 	  <div class="row">
 		  <!--	 footer en include-->
 	<?php include("include_foot.php"); ?>

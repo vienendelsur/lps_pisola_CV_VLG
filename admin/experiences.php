@@ -36,7 +36,7 @@ if(isset($_POST['e_titre'])) {// si on a posté une nouvelle comp.
 		$e_dates = addslashes($_POST['e_dates']);
 		$e_description = addslashes($_POST['e_description']);
 		
-		$pdoCV->exec(" INSERT INTO t_experiences VALUES (NULL, '$e_titre', '$e_soustitre', '$e_dates', '$e_description', '1') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
+		$pdoCV->exec(" INSERT INTO t_experiences VALUES (NULL, '$e_titre', '$e_soustitre', '$e_dates', '$e_description', '$id_utilisateur') ");//mettre $id_utilisateur quand on l'aura dans la variable de session
 		header("location: experiences.php");//pour revenir sur la page
 		exit();
 	}//ferme le if n'est pas vide
@@ -101,7 +101,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
   </div>
   
    <div class="row">
-    <div class="text-justify col-sm-4 col-lg-5">
+    <div class="text-justify col-sm-4 col-lg-9">
    
     <div class="panel panel-default">
 		 <div class="panel-body">
@@ -133,8 +133,12 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 		</div>
 		</div>
    </div>
-    <div class="col-sm-4 col-lg-7">
-    <div class="panel panel-default">
+    <div class="col-sm-4 col-lg-3"><p class="well text-center"><span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span></p>
+	   </div>
+	</div>
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="panel panel-default">
 		 <div class="panel-body">
 			<h5>Insertion d'une expérience</h5>
 			<hr>
@@ -164,8 +168,8 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 		</div>
 	</div>
 </div>
-</div>
-<div class="row"> </div>
+   <div class="col-sm-4 col-lg-2"><p class="well text-center"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
+	  </div>
 <hr>
 	  <div class="row">
 		  <!--	 footer en include-->

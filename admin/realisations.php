@@ -103,7 +103,7 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
   </div>
   
    <div class="row">
-    <div class="text-justify col-sm-4 col-lg-8">
+    <div class="text-justify col-sm-4 col-lg-9">
    
     <div class="panel panel-default">
 		 <div class="panel-body">
@@ -131,10 +131,13 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 </tbody>
 </table>
 		</div>
-		</div>
+	  </div>
    </div>
-    <div class="col-sm-4 col-lg-4 text-justify">
-    <div class="panel panel-default">
+    <div class="col-sm-4 col-lg-3"><p class="well text-center"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></p></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-justify col-lg-10">
+      <div class="panel panel-default">
 		 <div class="panel-body">
 			<h5>Insertion d'une réalisation</h5>
 			<hr>
@@ -164,35 +167,10 @@ if(isset($_GET['id_realisation'])) {// on récupère la comp. par son id ds l'ur
 		</div>
 	</div>
 </div>
-</div>
-  <hr>
-  <div class="row">
-    <div class="text-center col-md-12">
-      <div class="well"><strong>Composants Bootstrap de base</strong></div>
+    <div class="col-sm-4 col-lg-2"><p class="well text-center"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <h4>Boutons</h4>
-      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
-      <button type="button" class="btn btn-info btn-sm">Info bouton</button>
-      <button type="button" class="btn btn-success btn-sm">Success bouton</button>
-    </div>
-    <div class="text-center col-sm-4">
-      <h4>Labels ou étiquettes Bootstrap</h4>
-      <p>Using the insert panel, add labels to your page by using the label component.</p>
-      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
-    <div class="text-center col-sm-4">
-      <h4><strong>Glyphicons</strong></h4>
-      <p>You can also add glyphicons to your page from within the insert panel.</p>
-      <div class="row">
-        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-      </div>
-    </div>
-  </div>
-  <hr>
+<hr>
 	  <div class="row">
 		  <!--	 footer en include-->
 	<?php include("include_foot.php"); ?>
