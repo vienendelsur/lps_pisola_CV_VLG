@@ -141,33 +141,6 @@ if(isset($_GET['id_loisir'])) {// on récupère le loisir par son id dans l'url
 </div>
 </div>
   <hr>
-  <div class="row">
-    <div class="text-center col-md-12">
-      <div class="well"><strong>Composants Bootstrap de base</strong></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <h4>Boutons</h4>
-      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
-      <button type="button" class="btn btn-info btn-sm">Info bouton</button>
-      <button type="button" class="btn btn-success btn-sm">Success bouton</button>
-    </div>
-    <div class="text-center col-sm-4">
-      <h4>Labels ou étiquettes Bootstrap</h4>
-      <p>Using the insert panel, add labels to your page by using the label component.</p>
-      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
-    <div class="text-center col-sm-4">
-      <h4><strong>Glyphicons</strong></h4>
-      <p>You can also add glyphicons to your page from within the insert panel.</p>
-      <div class="row">
-        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-      </div>
-    </div>
-  </div>
-  <hr>
 	  <div class="row">
 		  <!--	 footer en include-->
 	<?php include("include_foot.php"); ?>

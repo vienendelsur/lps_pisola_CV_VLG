@@ -153,7 +153,7 @@ if(isset($_GET['id_experience'])) {// on récupère la comp. par son id ds l'url
 				<input type="text" required="required" name="e_soustitre" id="e_soustitre" placeholder="Insérer le sous-titre" class="form-control">
 				</div>
 				<div class="form-group">
-				<label for="e_dates">Dates</label>
+				<label for="e_dates">Dates exp.</label>
 				<input type="text" required="required" name="e_dates" id="e_dates" placeholder="Insérer les dates" class="form-control">
 				</div>
 				<div class="form-group">

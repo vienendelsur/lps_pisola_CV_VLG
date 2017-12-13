@@ -1,4 +1,31 @@
-<?php require 'connexion.php'; ?>
+<?php require 'connexion.php'; 
+
+session_start();// à mettre dans toutes les pages de l'admin
+	if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){//on établit que la variable de session est passée et contient bien le terme "connexion" 
+		$id_utilisateur=$_SESSION['id_utilisateur'];
+		$prenom=$_SESSION['prenom'];		
+		$nom=$_SESSION['nom'];
+		
+		//echo $_SESSION['connexion'];		
+        //var_dump($_SESSION);
+	}else{//l'utilisateur n'est pas connecté
+		header('location: login.php');		
+}//ferme le else du if isset
+
+//pour se déconnecter de l'admin à mettre dans toutes les pages ??? ou juste sur la page login.php ?
+if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url 
+	
+	$_SESSION['connexion']='';//on vide les variables de session
+	$_SESSION['id_utilisateur']='';
+	$_SESSION['prenom']='';
+	$_SESSION['nom']='';
+		
+		unset($_SESSION['connexion']);
+		session_destroy();
+	header('location:../index.php');	
+}//ferme le if isset de la déconnexion
+
+?>
 <?php
 //mise à jour d'une compétence
 if(isset($_POST['competence'])){//par le nom du premier input
@@ -28,7 +55,7 @@ if(isset($_POST['competence'])){//par le nom du premier input
 	?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin : <?php echo($ligne_utilisateur['pseudo']); ?></title>
+<title>Admin : modif compétence ; <?php echo($ligne_utilisateur['pseudo']); ?></title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -56,70 +83,29 @@ if(isset($_POST['competence'])){//par le nom du premier input
 </div>
 <div class="container"><!--container pour un container fixed width-->
   <div class="row text-center">
-    <div class="col-md-6 text-left col-lg-5">
-		<br><br>
+    <div class="col-md-6 text-left col-lg-6">
     	<div class="panel panel-default">
 		  <div class="panel-body">
-			<h2>Modification d'une compétence</h2>
-			<p><?php echo $ligne_competence['competence']; ?></p>
+			<h2>Mise à jour d'une compétence</h2>
 				<form action="modif_competence.php" method="post">
+					<div class="form-group">
 					<label for="competence">Compétence</label>
-					<input type="text" name="competence" value="<?php echo $ligne_competence['competence']; ?>">
-					<input type="number" name="c_niveau" value="<?php echo $ligne_competence['c_niveau']; ?>">
-					<input hidden name="id_competence" value="<?php echo $ligne_competence['id_competence']; ?>">
-					<input type="submit" value="Mettre à jour">
+					<input type="text" name="competence" value="<?php echo $ligne_competence['competence']; ?>" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="number" name="c_niveau" value="<?php echo $ligne_competence['c_niveau']; ?>" class="form-control">
+					</div>
+					<div class="form-group">
+						<input hidden name="id_competence" value="<?php echo $ligne_competence['id_competence']; ?>">
+					</div>
+					<input type="submit" class="btn btn-info btn-block" value="Mettre à jour">
 				</form>
 			</div>
 		</div>
 	  </div>
-    <div class="col-md-6 col-md-offset-3 col-lg-offset-0 col-lg-7"><p>&nbsp;</p><img src="img/popolasca_grate.jpg" alt="Placeholder image" class="img-responsive"></div>
 </div>
-  <hr>
-  <div class="row">
-    <div class="text-justify col-sm-4">
-		<h4>Titre du Port-Folio</h4>
-		<p><?php echo($ligne_titrecv['titre_cv']); ?></p></div>
-    <div class="col-sm-4 text-justify">
-	  <h4>Accroche</h4>
-		<p><?php echo($ligne_titrecv['accroche']); ?></p>
-    </div>
-    <div class="col-sm-4 text-justify">
-		<h4>Avatar :</h4>
-		<blockquote>
-			<img src="img/<?php echo($ligne_titrecv['logo']); ?>" alt="avatar patrick isola" width="175" height="147">
-	  </blockquote>
-	</div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="text-center col-md-12">
-      <div class="well"><strong>Composants Bootstrap de base</strong></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <h4>Boutons</h4>
-      <p>Quickly add buttons to your page by using the button component in the insert panel. </p>
-      <button type="button" class="btn btn-info btn-sm">Info bouton</button>
-      <button type="button" class="btn btn-success btn-sm">Success bouton</button>
-    </div>
-    <div class="text-center col-sm-4">
-      <h4>Labels ou étiquettes Bootstrap</h4>
-      <p>Using the insert panel, add labels to your page by using the label component.</p>
-      <span class="label label-warning">Info Label</span><span class="label label-danger">Danger Label</span> </div>
-    <div class="text-center col-sm-4">
-      <h4><strong>Glyphicons</strong></h4>
-      <p>You can also add glyphicons to your page from within the insert panel.</p>
-      <div class="row">
-        <div class="col-xs-4"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> </div>
-        <div class="col-xs-4"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-      </div>
-    </div>
-  </div>
-  <hr>
-	  <div class="row">
-		  <!--	 footer en include-->
+<div class="row">
+	    <!--	 footer en include-->
 	<?php include("include_foot.php"); ?>
 	  </div>
 	<hr>

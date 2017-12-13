@@ -60,7 +60,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 	<div class="container">
 	  <div class="row text-left">
 		  
-		  <div class="col-md-1 col-lg-3">&nbsp;autre col</div>
+		  <div class="col-md-1 col-lg-3"><p>&nbsp;</p><hr></div>
 	    <div class="col-md-6 text-center col-lg-6 col-lg-offset-0">
 		    <h1>Espace administratif du site</h1>
 		    <hr>
@@ -80,7 +80,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 			</div>
 		</div>
       </div><!--fermeture col-->
-		  <div class="col-md-1 col-lg-3">&nbsp;autre col</div>
+		  <div class="col-md-1 col-lg-3"><p>&nbsp;</p><hr></div>
 		</div><!--fermeture row-->
 	</div> <!--fermeture container-->
 	
