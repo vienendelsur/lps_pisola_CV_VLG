@@ -1,4 +1,7 @@
-<?php require 'admin/connexion.php'; 
+<?php 
+require 'admin/connexion.php'; 
+require 'Contact.class.php';
+
 
 session_start();// à mettre dans toutes les pages de l'admin
 	
@@ -14,6 +17,26 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 		session_destroy();
 	//header('location:../index.php');	
 }//ferme le if isset de la déconnexion
+
+//on vérifie que le formulaire a été posté
+if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui nous permet d'accéder directement aux champs par des variables
+	extract($_POST);
+	
+	$valid = (empty($c_nom) || empty($c_email) || !filter_var($c_email, FILTER_VALIDATE_EMAIL) || empty($c_sujet) || empty($c_message))
+	 ? false : true;// écriture ternaire pour if else
+	
+	if ($valid) {//si tous les champs sont correctement renseignés
+		$contact = new Contact();//on créé un nouvel objet (ou instance) de la classe Contact.class.php
+		
+		$contact->insertContact($c_nom, $c_email, $c_sujet, $c_message);
+		
+		unset($c_nom);
+		unset($c_email);
+		unset($c_sujet);
+		unset($c_message);
+		
+	}
+}
 
 ?>
 <!DOCTYPE html>
@@ -195,7 +218,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
     	</div>
     </div>
     <hr>
-    <h2>Contactez-moi</h2>
+    <h2 id="pascalou">Contactez-moi</h2>
     <hr>
   </div>
   <div class="container">
@@ -206,21 +229,24 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
           <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"> </div>
           <div class="text-center col-lg-12"> 
             <!-- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form -->
-            <form role="form" id="feedbackForm" class="text-center">
+            <form role="form" id="feedbackForm" class="text-center" action="index.php#pascalou" method="POST">
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                <span class="help-block" style="display: none;">Please enter your name.</span></div>
+                <label for="c_nom">Nom</label>
+                <input type="text" class="form-control" id="c_nom" name="c_nom" placeholder="Votre nom">
+                <span class="help-block" style="display: none;">Votre nom</span></div>
               <div class="form-group">
-                <label for="email">E-Mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-                <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span></div>
+                <label for="c_email">Courriel</label>
+                <input type="email" class="form-control" id="c_email" name="c_email" placeholder="Courriel">
+                <span class="help-block" style="display: none;">Entrez une adresse courriel valide</span></div>
+				 <div class="form-group">
+                <label for="c_sujet">Votre remarque</label>
+                <input type="text" class="form-control" id="c_sujet" name="c_sujet" placeholder="Objet de votre message">
+                <span class="help-block" style="display: none;">Entrez une adresse courriel valide</span></div>
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message"></textarea>
-                <span class="help-block" style="display: none;">Please enter a message.</span></div>
-              <span class="help-block" style="display: none;">Please enter a the security code.</span>
-              <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" style=" margin-top: 10px;"> Send</button>
+                <label for="c_message">Message</label>
+                <textarea rows="10" cols="100" class="form-control" id="c_message" name="c_message" placeholder="Message"></textarea>
+                <span class="help-block" style="display: none;">Votre message</span></div>
+              <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" style=" margin-top: 10px;">Envoyez</button>
             </form>
             <!-- END CONTACT FORM --> 
           </div>
