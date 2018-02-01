@@ -114,7 +114,7 @@ if(isset($_GET['id_loisir'])) {// on récupère le loisir par son id dans l'url
 <tr>
 <?php while ($ligne_loisir = $sql->fetch()) { ?>
 		<td><?php echo $ligne_loisir['loisir']; ?></td>
-<td><a href="loisirs.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
+<td><a onClick="return(confirm(\'Etes-vous certain ?\'));" href="loisirs.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-danger btn-xs">supprimer</a></td>
   <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_loisir['id_loisir']; ?>" class="btn btn-success btn-xs">modifier</a></td>
 	</tr>
 <?php }	?>
