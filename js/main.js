@@ -10,7 +10,7 @@ $(function(){//vérifier que le chargement de la page se fait correctement
 		if(confirm('Voulez effacer cette info ?')){//on vérifie si l'utilisateur a cliqué, oui ? on fait le contenu du if ; non ? on fait rien
 			//console.log('alors ? ');
 			var lien = $(this).attr('href');
-			//console.log(lien);
+			console.log(lien);
 			window.location.href=lien;
 		} 	
 	});
