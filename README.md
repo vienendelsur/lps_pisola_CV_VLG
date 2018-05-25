@@ -17,3 +17,5 @@ mise en place de la procédure de sauvegarde avec GitHub / et sauvegarde de la B
 
 1. mise en place d'un gabarit bootstrap sur la page index.php de l'admin
 
+ceci est un test
+

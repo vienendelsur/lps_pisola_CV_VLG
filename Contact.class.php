@@ -17,9 +17,9 @@ class Contact {//variable privée, on ne peut modifier la variable qu'en passant
 		$this->c_sujet = strip_tags($c_sujet);
 		$this->c_message = strip_tags($c_message);
 		
-		require('admin/connexion.php');//in a besoin de se connecter maintenant
+		require('admin/connexion.php');//on a besoin de se connecter maintenant
 		
-		$requete = $pdoCV->prepare(" INSERT INTO t_contacts (c_nom, c_email, c_sujet, c_message) VALUES (:c_nom, :c_email, :c_sujet, :c_message) ");
+		$requete = $pdoCV->prepare(" INSERT INTO t_contacts (c_nom, c_email, c_sujet, c_message) VALUES (:c_nom, :c_email, :c_sujet, :c_message) ");// 
 		$requete->execute([//on créé une requête et on l'exécute
 			':c_nom' => $this->c_nom,
 			':c_email' => $this->c_email,
@@ -30,21 +30,5 @@ class Contact {//variable privée, on ne peut modifier la variable qu'en passant
 	}//fin public function insertContact
 		
 }//fin class Contact
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
