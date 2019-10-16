@@ -23,7 +23,7 @@ if(isset($_GET['quitter'])){//on récupère le terme quitter dans l'url
 		unset($_SESSION['connexion']);
 		session_destroy();
 	header('location:../index.php');	
-}//ferme le if isset de la déconnexion
+}//ferme le if isset de la déconne  xion
 
 ?>
 <!DOCTYPE html>

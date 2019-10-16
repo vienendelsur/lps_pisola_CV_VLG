@@ -45,6 +45,7 @@ if(isset($_GET['id_loisir'])) {// on récupère le loisir par son id dans l'url
 	
 	$sql = " DELETE FROM t_loisirs WHERE id_loisir = '$efface' ";
 	$pdoCV->query($sql);// on peut avec exec aussi si on veut
+	
 	header("location: loisirs.php");//pour revenir sur la page
 }//ferme le if isset
 ?>
